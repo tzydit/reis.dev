@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Miguel Castanho Reis — Full Stack Developer. reis.dev: produtos digitais com performance, segurança e design minimalista." />
+<title>REIS.DEV // TERMINAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ====================================================== */
+  /*  REIS.DEV OS — retro CRT terminal (amber phosphor)     */
+  /* ====================================================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* P4 white/grey phosphor monochrome — gentle */
+    --black: #050605;
+    --screen: #070908;
+    --amber: #c8d0c8;          /* primary phosphor (neutral grey-white) */
+    --amber-dim: #8c948c;
+    --amber-glow: rgba(200, 210, 200, 0.30);
+    --green: #eef2ee;          /* bright phosphor accent */
+    --green-dim: #aab2aa;
+    --red: #d98b80;
+    --paper: #eef2ee;          /* brightest text */
+    --muted: #595f59;
+    --line: rgba(200, 210, 200, 0.20);
+    --line-soft: rgba(200, 210, 200, 0.09);
+    --panel: rgba(200, 210, 200, 0.025);
+  }
+
+  html { scroll-behavior: auto; }
+
+  body {
+    background: #000;
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: none;
+    text-shadow: 0 0 4px var(--amber-glow);
+  }
+
+  /* ============== CRT SCREEN SHELL ============== */
+  .crt {
+    position: relative;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse 90% 70% at 50% 50%, rgba(200, 210, 200, 0.035), transparent 70%),
+      var(--screen);
+  }
+  /* screen curvature darkening at edges */
+  .crt::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 9000; pointer-events: none;
+    background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%);
+  }
+  /* scanlines */
+  .scanlines {
+    position: fixed; inset: 0; z-index: 9001; pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 1px,
+      rgba(0,0,0,0.35) 2px,
+      rgba(0,0,0,0) 3px
+    );
+    mix-blend-mode: multiply;
+  }
+  /* moving scan glow */
+  .scanbar {
+    position: fixed; left: 0; right: 0; height: 90px; z-index: 9002; pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(200,210,200,0.04), transparent);
+    animation: scanmove 7s linear infinite;
+  }
+  @keyframes scanmove { 0% { top: -90px; } 100% { top: 100%; } }
+  /* flicker */
+  .flicker {
+    position: fixed; inset: 0; z-index: 9003; pointer-events: none;
+    background: rgba(200,210,200,0.015);
+    animation: flick 0.15s steps(2) infinite;
+  }
+  @keyframes flick { 0%,100% { opacity: 0.25; } 50% { opacity: 0.4; } }
+  /* grain */
+  .grain {
+    position: fixed; inset: 0; z-index: 9000; pointer-events: none; opacity: 0.06;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* ============== BOOT SEQUENCE ============== */
+  #boot {
+    position: fixed; inset: 0; z-index: 9500;
+    background: #000;
+    padding: 6vh 6vw;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--amber);
+    font-size: 14px; line-height: 1.8;
+    overflow: hidden;
+    white-space: pre-wrap;
+  }
+  #boot.done { animation: bootOut 0.5s ease forwards; }
+  @keyframes bootOut { to { opacity: 0; visibility: hidden; } }
+  #boot .cur { display: inline-block; width: 9px; height: 1.1em; background: var(--amber); vertical-align: text-bottom; animation: blink 0.7s step-end infinite; }
+
+  /* ============== CONTENT WRAP ============== */
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px 80px; position: relative; z-index: 10; }
+
+  /* big VT323 display headers */
+  .vt { font-family: 'VT323', monospace; letter-spacing: 1px; }
+
+  @keyframes blink { 50% { opacity: 0; } }
+  .cursor { display: inline-block; width: 0.6em; height: 1.05em; background: var(--amber); vertical-align: text-bottom; margin-left: 2px; animation: blink 0.8s step-end infinite; box-shadow: 0 0 8px var(--amber-glow); }
+
+  /* ============== TOP STATUS BAR ============== */
+  .statusbar {
+    position: sticky; top: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;
+    padding: 8px 24px;
+    background: #000;
+    border-bottom: 2px solid var(--amber);
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .statusbar .sys { color: var(--paper); font-weight: 700; }
+  .statusbar .blink { color: var(--green); animation: blink 1.2s step-end infinite; }
+  .statusbar .seg { color: var(--muted); }
+
+  /* ============== NAV (command menu) ============== */
+  nav {
+    position: sticky; top: 35px; z-index: 190;
+    background: #000;
+    border-bottom: 1px solid var(--line);
+    padding: 6px 24px;
+    display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
+  }
+  nav .prompt { color: var(--green); margin-right: 8px; }
+  nav a {
+    color: var(--amber-dim); text-decoration: none; padding: 4px 10px;
+    font-size: 13px; letter-spacing: 1px; border: 1px solid transparent;
+    transition: all 0.12s steps(2);
+  }
+  nav a .k { color: var(--green); }
+  nav a:hover, nav a.active { color: #000; background: var(--amber); text-shadow: none; box-shadow: 0 0 12px var(--amber-glow); }
+  .nav-toggle { display: none; }
+
+  /* ============== ASCII HERO ============== */
+  #hero { padding: 60px 0 40px; }
+  .ascii {
+    font-family: 'VT323', monospace;
+    color: var(--amber);
+    font-size: clamp(14px, 3.4vw, 30px);
+    line-height: 1.0;
+    white-space: pre;
+    overflow-x: auto;
+    text-shadow: 0 0 10px var(--amber-glow);
+    margin-bottom: 28px;
+  }
+  .hero-line { font-size: clamp(13px, 2vw, 16px); color: var(--paper); margin-bottom: 6px; }
+  .hero-line .lbl { color: var(--green); }
+  .hero-line .swap { color: var(--amber); }
+  .hero-desc { color: var(--amber-dim); max-width: 620px; margin: 20px 0 28px; }
+  .hero-desc::before { content: '# '; color: var(--muted); }
+
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .cta {
+    font-family: 'JetBrains Mono', monospace; font-size: 14px;
+    color: var(--amber); text-decoration: none;
+    border: 1px solid var(--amber); padding: 10px 18px;
+    background: transparent; transition: all 0.12s steps(2); letter-spacing: 1px;
+  }
+  .cta::before { content: '> '; }
+  .cta:hover { background: var(--amber); color: #000; text-shadow: none; box-shadow: 0 0 16px var(--amber-glow); }
+  .cta.alt { border-color: var(--green); color: var(--green); }
+  .cta.alt:hover { background: var(--green); color: #000; box-shadow: 0 0 16px rgba(200,210,200,0.35); }
+
+  /* ============== PANEL (box-drawing module) ============== */
+  .panel { margin: 48px 0; border: 1px solid var(--line); background: var(--panel); position: relative; }
+  .panel-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 14px; border-bottom: 1px solid var(--line);
+    background: rgba(200,210,200,0.05);
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--paper);
+  }
+  .panel-bar .dots { color: var(--amber-dim); letter-spacing: 2px; }
+  .panel-bar .id { color: var(--green); }
+  .panel-body { padding: 24px 22px; }
+
+  .sec-title {
+    font-family: 'VT323', monospace; font-size: clamp(28px, 5vw, 46px);
+    color: var(--amber); line-height: 1; margin-bottom: 18px;
+    text-shadow: 0 0 12px var(--amber-glow);
+  }
+  .sec-title::before { content: '> '; color: var(--green); }
+
+  /* ABOUT */
+  .about p { color: var(--amber-dim); margin-bottom: 14px; max-width: 680px; }
+  .about strong { color: var(--paper); }
+  .skills { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 12px; color: var(--green); padding: 3px 10px;
+    border: 1px solid var(--green-dim); background: rgba(200,210,200,0.04);
+    transition: all 0.12s steps(2);
+  }
+  .chip::before { content: '['; color: var(--muted); margin-right: 4px; }
+  .chip::after { content: ']'; color: var(--muted); margin-left: 4px; }
+  .chip:hover { background: var(--green); color: #000; text-shadow: none; }
+
+  /* PROJECTS — directory listing */
+  .dir-head { color: var(--muted); font-size: 12px; letter-spacing: 1px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); margin-bottom: 4px; }
+  .file {
+    display: grid; grid-template-columns: 28px 1fr auto; gap: 14px; align-items: baseline;
+    padding: 14px 8px; border-bottom: 1px dashed var(--line-soft);
+    text-decoration: none; color: inherit; transition: background 0.12s steps(2);
+  }
+  .file:hover { background: rgba(200,210,200,0.06); }
+  .file:hover .fname { color: #000; background: var(--amber); text-shadow: none; }
+  .file .fidx { color: var(--muted); font-size: 13px; }
+  .fname { color: var(--paper); font-weight: 600; font-size: 15px; padding: 0 4px; }
+  .fname::before { content: './'; color: var(--green); }
+  .fdesc { color: var(--amber-dim); font-size: 13px; margin-top: 4px; line-height: 1.5; }
+  .ftags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .ftag { font-size: 11px; color: var(--green-dim); }
+  .ftag::before { content: '#'; }
+  .farrow { color: var(--amber); font-size: 16px; align-self: center; }
+  .file:hover .farrow { color: var(--green); }
+
+  /* EXPERIENCE — log */
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 32px; }
+  .stat { border: 1px solid var(--line); padding: 18px 16px; background: var(--panel); }
+  .stat-num { font-family: 'VT323', monospace; font-size: clamp(34px, 6vw, 52px); color: var(--green); line-height: 1; text-shadow: 0 0 12px rgba(200,210,200,0.35); }
+  .stat-num .plus { font-size: 0.5em; }
+  .stat-label { color: var(--paper); font-size: 13px; margin-top: 6px; }
+  .stat-sub { color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .stat-sub::before { content: '// '; }
+
+  .log { border-left: 2px solid var(--line); padding-left: 0; }
+  .log-item { padding: 16px 0 16px 22px; border-bottom: 1px dashed var(--line-soft); position: relative; }
+  .log-item::before { content: '◆'; position: absolute; left: -7px; top: 18px; color: var(--amber); background: var(--screen); font-size: 11px; }
+  .log-period { color: var(--green); font-size: 12px; letter-spacing: 1px; }
+  .log-company { color: var(--paper); font-size: 17px; font-weight: 600; margin-top: 4px; }
+  .log-role { color: var(--amber); font-size: 13px; margin: 2px 0 8px; }
+  .log-role::before { content: '> '; color: var(--green); }
+  .log-desc { color: var(--amber-dim); font-size: 13px; max-width: 620px; }
+
+  /* CONTACT */
+  #contact { text-align: left; }
+  .comm { display: flex; flex-direction: column; gap: 0; margin-top: 14px; }
+  .comm a {
+    display: flex; align-items: center; gap: 14px; padding: 14px 8px;
+    border-bottom: 1px dashed var(--line-soft); color: var(--paper); text-decoration: none;
+    transition: all 0.12s steps(2); font-size: 14px;
+  }
+  .comm a:hover { background: rgba(200,210,200,0.06); padding-left: 18px; }
+  .comm a .ch { color: var(--green); width: 130px; flex-shrink: 0; }
+  .comm a .ch::before { content: '['; } .comm a .ch::after { content: ']'; }
+  .comm a svg { width: 16px; height: 16px; color: var(--amber); flex-shrink: 0; }
+  .comm a .val { color: var(--amber-dim); }
+  .comm a:hover .val { color: var(--paper); }
+
+  /* FOOTER */
+  footer {
+    border-top: 2px solid var(--amber); margin-top: 60px; padding: 18px 24px;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    font-size: 12px; color: var(--muted); letter-spacing: 1px; position: relative; z-index: 10;
+  }
+  footer .g { color: var(--green); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(10px); transition: opacity 0.4s steps(4), transform 0.4s steps(4); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  ::selection { background: var(--amber); color: #000; text-shadow: none; }
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: #000; }
+  ::-webkit-scrollbar-thumb { background: var(--amber-dim); border: 2px solid #000; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--amber); }
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width: 720px) {
+    body { font-size: 14px; }
+    /* nav: all 4 links fit one row, no scroll, no prompt, no numbers */
+    nav { gap: 0; flex-wrap: nowrap; overflow: hidden; white-space: nowrap; padding: 6px 6px; justify-content: space-between; }
+    nav .prompt, nav a .k { display: none; }
+    nav a { padding: 4px 6px; font-size: 12px; letter-spacing: 0; flex: 0 0 auto; }
+    /* panel header: drop the filler dashes so it never wraps */
+    .panel-bar { font-size: 11px; padding: 6px 12px; gap: 8px; }
+    .panel-bar .dots { display: none; }
+    .wrap { padding: 0 16px 60px; }
+    .statusbar { font-size: 10px; padding: 7px 16px; }
+    .statusbar .seg.hideable { display: none; }
+    .stats { grid-template-columns: 1fr; }
+    .file { grid-template-columns: 24px 1fr; }
+    .farrow { display: none; }
+    .comm a { gap: 10px; }
+    .comm a .ch { width: 84px; font-size: 11px; }
+    .comm a .val { font-size: 12px; word-break: break-all; min-width: 0; }
+    #boot { font-size: 12px; padding: 5vh 6vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scanbar, .flicker { animation: none; }
+    .reveal { transition: none; opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="crt">
+  <div class="grain"></div>
+  <div class="scanlines"></div>
+  <div class="scanbar"></div>
+  <div class="flicker"></div>
+
+  <!-- ============== BOOT SEQUENCE ============== -->
+  <div id="boot"><span id="bootText"></span><span class="cur"></span></div>
+
+  <!-- ============== STATUS BAR ============== -->
+  <div class="statusbar">
+    <span class="sys">REIS.DEV OS v2.0</span>
+    <span class="seg hideable">NODE: RS-BR</span>
+    <span class="seg hideable">MEM: OK</span>
+    <span class="seg">SYS_TIME <span id="clock">--:--:--</span></span>
+    <span class="blink">● ONLINE</span>
+  </div>
+
+  <!-- ============== NAV ============== -->
+  <nav id="nav">
+    <span class="prompt">guest@reis.dev:~$</span>
+    <a href="#about" data-target="about"><span class="k">01</span>_about</a>
+    <a href="#projects" data-target="projects"><span class="k">02</span>_projects</a>
+    <a href="#experience" data-target="experience"><span class="k">03</span>_experience</a>
+    <a href="#contact" data-target="contact"><span class="k">04</span>_contact</a>
+  </nav>
+
+  <div class="wrap">
+
+    <!-- ============== HERO ============== -->
+    <section id="hero">
+      <pre class="ascii" aria-label="REIS DEV">
+ ____   _____ ___  ____      ____   _____ __     __
+|  _ \ | ____||_ _|/ ___|    |  _ \ | ____|\ \   / /
+| |_) ||  _|   | | \___ \    | | | ||  _|   \ \ / /
+|  _ < | |___  | |  ___) |   | |_| || |___   \ V /
+|_| \_\|_____||___||____/    |____/ |_____|   \_/
+</pre>
+
+      <div class="hero-line"><span class="lbl">USER......:</span> Miguel Castanho <span class="swap" id="swapWord">Reis</span></div>
+      <div class="hero-line"><span class="lbl">ROLE......:</span> Full Stack Developer / founder reis.dev</div>
+      <div class="hero-line"><span class="lbl">LOCATION..:</span> Rio Grande do Sul, BR <span style="color:var(--muted)">// remoto — todo o Brasil</span></div>
+      <div class="hero-line"><span class="lbl">STATUS....:</span> <span style="color:var(--green)">AVAILABLE FOR PROJECTS</span><span class="cursor"></span></div>
+
+      <p class="hero-desc">
+        Construo produtos web modernos, seguros e escaláveis.
+        Foco em performance, arquitetura sólida e design minimalista.
+      </p>
+
+      <div class="cta-row">
+        <a href="#contact" class="cta">init_contact</a>
+        <a href="#projects" class="cta alt">list_projects</a>
+      </div>
+    </section>
+
+    <!-- ============== ABOUT ============== -->
+    <section id="about" class="panel reveal">
+      <div class="panel-bar"><span class="id">[ 01 // ABOUT ]</span><span class="dots">────────────────</span><span>READ-ONLY</span></div>
+      <div class="panel-body about">
+        <h2 class="sec-title vt">cat ./sobre.txt</h2>
+        <p>
+          Desenvolvedor de software apaixonado por construir soluções web modernas,
+          seguras e escaláveis. Baseado no <strong>Rio Grande do Sul</strong>,
+          movido por curiosidade e compromisso com excelência técnica.
+        </p>
+        <p>
+          Atualmente foco em transformar desafios complexos em interfaces imersivas
+          e arquiteturas de alta performance através da <strong>reis.dev</strong>.
+          Base sólida construída como Full Stack na <strong>Compass UOL</strong>,
+          complementada por experiência prática em sistemas críticos de Gestão Pública na <strong>Delta</strong>.
+        </p>
+        <div class="skills">
+          <span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">Python</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Docker</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Tailwind</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== PROJECTS ============== -->
+    <section id="projects" class="panel reveal">
+      <div class="panel-bar"><span class="id">[ 02 // PROJECTS ]</span><span class="dots">──────────</span><span>4 ENTRIES</span></div>
+      <div class="panel-body">
+        <h2 class="sec-title vt">ls -la ./projetos</h2>
+        <div class="dir-head">PERM        IDX   NAME / DESCRIPTION</div>
+
+        <a href="https://github.com/tzydit/Money-Tracker-Crypto" target="_blank" rel="noopener" class="file">
+          <span class="fidx">01</span>
+          <span>
+            <span class="fname">money-tracker-crypto</span>
+            <span class="fdesc">Controle financeiro pessoal com integração de criptomoedas. Saldos, cotações em tempo real e visualização de portfólio.</span>
+            <span class="ftags"><span class="ftag">python</span><span class="ftag">crypto-api</span><span class="ftag">finance</span></span>
+          </span>
+          <span class="farrow">↗</span>
+        </a>
+
+        <a href="https://github.com/tzydit/anime-catalog" target="_blank" rel="noopener" class="file">
+          <span class="fidx">02</span>
+          <span>
+            <span class="fname">anime-catalog</span>
+            <span class="fdesc">Catálogo interativo de animes com busca, filtros e detalhes. Consumo de API pública (Jikan/AniList).</span>
+            <span class="ftags"><span class="ftag">javascript</span><span class="ftag">rest-api</span><span class="ftag">ui</span></span>
+          </span>
+          <span class="farrow">↗</span>
+        </a>
+
+        <a href="https://github.com/luc9z/amigo-de-patas-frontend" target="_blank" rel="noopener" class="file">
+          <span class="fidx">03</span>
+          <span>
+            <span class="fname">amigo-de-patas</span>
+            <span class="fdesc">Frontend de plataforma para adoção de animais. Interface responsiva conectando ONGs e tutores.</span>
+            <span class="ftags"><span class="ftag">react</span><span class="ftag">frontend</span><span class="ftag">social</span></span>
+          </span>
+          <span class="farrow">↗</span>
+        </a>
+
+        <a href="https://github.com/jornadev/code-for-fun" target="_blank" rel="noopener" class="file">
+          <span class="fidx">04</span>
+          <span>
+            <span class="fname">code-for-fun</span>
+            <span class="fdesc">Coleção de mini-projetos e experimentos. Desafios, algoritmos e ideias rápidas para praticar e aprender.</span>
+            <span class="ftags"><span class="ftag">multi-lang</span><span class="ftag">playground</span><span class="ftag">learning</span></span>
+          </span>
+          <span class="farrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============== EXPERIENCE ============== -->
+    <section id="experience" class="panel reveal">
+      <div class="panel-bar"><span class="id">[ 03 // EXPERIENCE ]</span><span class="dots">────────</span><span>SYS LOG</span></div>
+      <div class="panel-body">
+        <h2 class="sec-title vt">tail ./log/career</h2>
+
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-target="5">0</span><span class="plus">+</span></div>
+            <div class="stat-label">anos codando</div>
+            <div class="stat-sub">dev journey</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num"><span class="count" data-target="5">0</span><span class="plus">+</span></div>
+            <div class="stat-label">clientes satisfeitos</div>
+            <div class="stat-sub">freelance &amp; reis.dev</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">RS</div>
+            <div class="stat-label">base no Rio Grande do Sul</div>
+            <div class="stat-sub">remoto · todo o Brasil</div>
+          </div>
+        </div>
+
+        <div class="log">
+          <div class="log-item">
+            <div class="log-period">2026 — PRESENT</div>
+            <div class="log-company">reis.dev</div>
+            <div class="log-role">Founder &amp; Full Stack Developer</div>
+            <p class="log-desc">Estúdio digital independente. Produtos web sob medida com foco em performance, segurança e design minimalista.</p>
+          </div>
+          <div class="log-item">
+            <div class="log-period">2025 — PRESENT</div>
+            <div class="log-company">Delta — Gestão Pública</div>
+            <div class="log-role">Suporte &amp; Análise</div>
+            <p class="log-desc">Resolução de problemas críticos em sistemas complexos de Gestão Pública, lidando com regras de negócio rigorosas.</p>
+          </div>
+          <div class="log-item">
+            <div class="log-period">2023 — 2024</div>
+            <div class="log-company">Compass UOL</div>
+            <div class="log-role">Full Stack Developer</div>
+            <p class="log-desc">Base técnica em engenharia de software, code review, testes automatizados e metodologias ágeis em larga escala.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section id="contact" class="panel reveal">
+      <div class="panel-bar"><span class="id">[ 04 // CONTACT ]</span><span class="dots">──────────</span><span>COMM LINK</span></div>
+      <div class="panel-body">
+        <h2 class="sec-title vt">./connect --now</h2>
+        <p style="color:var(--amber-dim);max-width:560px">
+          Disponível para projetos freelance, consultoria técnica ou novas oportunidades.
+          Abra um canal:
+        </p>
+        <div class="comm">
+          <a href="https://wa.me/55999429756?text=Ol%C3%A1%20Miguel!%20Vi%20seu%20portf%C3%B3lio%20reis.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">
+            <span class="ch">WHATSAPP</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            <span class="val">+55 99 9429756</span>
+          </a>
+          <a href="mailto:miguelcastanhoreisr@gmail.com">
+            <span class="ch">EMAIL</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+            <span class="val">miguelcastanhoreisr@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/miguel-castanho-reis-02393a269/" target="_blank" rel="noopener">
+            <span class="ch">LINKEDIN</span>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3v9zM6.5 8.3a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5zM19 19h-3v-4.7c0-1.1-.4-1.9-1.4-1.9-.8 0-1.2.5-1.4 1-.1.2-.1.4-.1.7V19h-3v-9h3v1.3a3 3 0 0 1 2.7-1.5c2 0 3.4 1.3 3.4 4.1V19z"/></svg>
+            <span class="val">/miguel-castanho-reis</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <span>&copy; <span id="year"></span> <span class="g">reis.dev</span> — built by Miguel Reis</span>
+    <span>EOF // SESSION ACTIVE <span class="g">●</span></span>
+  </footer>
+</div>
+
+<script>
+/* ============== BOOT SEQUENCE ============== */
+(function () {
+  const boot = document.getElementById('boot');
+  const out = document.getElementById('bootText');
+  if (!boot || !out) return;
+
+  // skip if user prefers reduced motion
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const lines = [
+    'REIS.DEV BIOS v2.0 — (C) 2026',
+    'Initializing system memory........ OK',
+    'Detecting peripherals............. OK',
+    'Mounting /dev/portfolio........... OK',
+    'Loading kernel modules:',
+    '  [+] javascript.ko',
+    '  [+] typescript.ko',
+    '  [+] react.ko  next.ko  node.ko',
+    '  [+] python.ko  docker.ko  aws.ko',
+    'Establishing uplink RS-BR......... OK',
+    'Auth: guest@reis.dev.............. GRANTED',
+    '',
+    'Welcome, operator.',
+    'Launching interface_'
+  ];
+
+  if (reduce) { boot.classList.add('done'); return; }
+
+  let li = 0, ci = 0, buf = '';
+  function tick() {
+    if (li >= lines.length) {
+      setTimeout(() => boot.classList.add('done'), 450);
+      return;
+    }
+    const line = lines[li];
+    if (ci < line.length) {
+      buf += line[ci++];
+      out.textContent = buf;
+      setTimeout(tick, line.startsWith('  ') ? 6 : 12);
+    } else {
+      buf += '\n'; out.textContent = buf; li++; ci = 0;
+      setTimeout(tick, 70);
+    }
+  }
+  tick();
+
+  // allow skip on key/click
+  function skip() { boot.classList.add('done'); }
+  boot.addEventListener('click', skip);
+  document.addEventListener('keydown', skip, { once: true });
+})();
+
+/* ============== CLOCK ============== */
+(function () {
+  const el = document.getElementById('clock');
+  if (!el) return;
+  function upd() {
+    const opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'America/Sao_Paulo' };
+    el.textContent = new Date().toLocaleTimeString('pt-BR', opts);
+  }
+  upd(); setInterval(upd, 1000);
+})();
+
+/* ============== SMOOTH SCROLL + ACTIVE NAV ============== */
+(function () {
+  function ease(t) { return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function scrollTo(y, d=700) {
+    const s = window.scrollY, diff = y - s; let start;
+    function step(ts){ if(!start)start=ts; const t=Math.min((ts-start)/d,1); window.scrollTo(0, s+diff*ease(t)); if(t<1) requestAnimationFrame(step);} requestAnimationFrame(step);
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const t = document.getElementById(id); if (!t) return;
+      e.preventDefault();
+      scrollTo(t.getBoundingClientRect().top + window.scrollY - 80, 750);
+    });
+  });
+  const sections = ['about','projects','experience','contact'];
+  const links = {};
+  sections.forEach(id => links[id] = document.querySelector(`nav a[data-target="${id}"]`));
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) {
+      sections.forEach(id => links[id] && links[id].classList.remove('active'));
+      links[e.target.id] && links[e.target.id].classList.add('active');
+    }});
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(id => { const el = document.getElementById(id); if (el) obs.observe(el); });
+})();
+
+/* ============== REVEAL ============== */
+(function () {
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+
+/* ============== STAT COUNT-UP ============== */
+(function () {
+  function run(el) {
+    const target = parseInt(el.dataset.target,10)||0; const dur=1100; const s=performance.now();
+    function step(now){ const t=Math.min((now-s)/dur,1); el.textContent=Math.round(target*(1-Math.pow(1-t,3))); if(t<1)requestAnimationFrame(step); else el.textContent=target; }
+    requestAnimationFrame(step);
+  }
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => { if (e.isIntersecting) { run(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count').forEach(c => obs.observe(c));
+})();
+
+/* ============== HERO WORD SWAP ============== */
+(function () {
+  const el = document.getElementById('swapWord');
+  if (!el) return;
+  const words = ['Reis','reis.dev','dev','builder','Reis'];
+  let i = 0;
+  setInterval(() => { i=(i+1)%words.length; el.textContent = words[i]; }, 2600);
+})();
+
+/* ============== FOOTER YEAR ============== */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ============== KONAMI — green phosphor swap ============== */
+(function () {
+  const seq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let idx = 0;
+  document.addEventListener('keydown', e => {
+    if (e.key.toLowerCase() === seq[idx].toLowerCase()) {
+      if (++idx === seq.length) {
+        // toggle to amber P3 phosphor
+        const r = document.documentElement.style;
+        r.setProperty('--amber', '#ffb000');
+        r.setProperty('--amber-dim', '#c77f00');
+        r.setProperty('--amber-glow', 'rgba(255,176,0,0.55)');
+        r.setProperty('--paper', '#f2c66b');
+        r.setProperty('--green', '#ffd27a');
+        r.setProperty('--green-dim', '#c77f00');
+        idx = 0;
+      }
+    } else idx = 0;
+  });
+})();
+</script>
+
+</body>
+</html>
