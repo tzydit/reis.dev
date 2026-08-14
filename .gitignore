@@ -1,0 +1,10 @@
+# arquivos de trabalho, fora do site publicado
+_versoes-antigas/
+
+# originais pesados das imagens (as versões usadas estão em assets/)
+assets/miguel.png
+
+# sistema
+.DS_Store
+Thumbs.db
+desktop.ini
