@@ -8,3 +8,6 @@ assets/miguel.png
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ferramentas de design
+.taste-skill/
