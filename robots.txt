@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://reis.dev/sitemap.xml
+Sitemap: https://reisdev.dev/sitemap.xml

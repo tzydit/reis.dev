@@ -3,22 +3,50 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Miguel Reis — Desenvolvedor Full Stack · reis.dev</title>
+<title>ReisDev Studio — Criação de Sites e Sistemas · Miguel Reis</title>
 <meta name="description" content="Miguel Castanho Reis, desenvolvedor full stack no Rio Grande do Sul. Sites e sistemas web do banco de dados ao deploy, com prazo e valor fechados antes de começar. Criador do FinançasIQ." />
 <meta name="theme-color" content="#2f66db" />
-<meta property="og:title" content="Miguel Reis — Desenvolvedor Full Stack" />
+<meta property="og:title" content="ReisDev Studio — Criação de Sites e Sistemas" />
 <meta property="og:description" content="Monte o plano do seu projeto e mande no WhatsApp. Sites e sistemas web do banco de dados ao deploy." />
-<meta property="og:type" content="profile" />
-<meta property="og:image" content="https://reis.dev/assets/og.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://reisdev.dev/assets/og.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:locale" content="pt_BR" />
-<meta property="og:url" content="https://reis.dev/" />
-<meta property="og:site_name" content="reis.dev" />
+<meta property="og:url" content="https://reisdev.dev/" />
+<meta property="og:site_name" content="ReisDev Studio" />
 <meta name="twitter:card" content="summary_large_image" />
-<link rel="canonical" href="https://reis.dev/" />
+<link rel="canonical" href="https://reisdev.dev/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="author" content="Miguel Castanho Reis" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ReisDev Studio",
+  "url": "https://reisdev.dev/",
+  "image": "https://reisdev.dev/assets/og.jpg",
+  "logo": "https://reisdev.dev/assets/icon-180.png",
+  "description": "Criação de sites e sistemas web sob medida, do banco de dados ao deploy, com prazo e valor fechados antes de começar.",
+  "areaServed": "BR",
+  "address": { "@type": "PostalAddress", "addressRegion": "RS", "addressCountry": "BR" },
+  "founder": {
+    "@type": "Person",
+    "name": "Miguel Castanho Reis",
+    "jobTitle": "Desenvolvedor Full Stack",
+    "sameAs": [
+      "https://www.linkedin.com/in/miguel-castanho-reis-02393a269/",
+      "https://github.com/tzydit"
+    ]
+  },
+  "sameAs": ["https://www.instagram.com/reisdev.studio/"],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Site institucional" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sistema web com login e painel" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manutenção e evolução de sistemas" } }
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%232f66db'/%3E%3Crect x='2' y='2' width='1' height='4' fill='%23fff'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%23fff'/%3E%3Crect x='4' y='2' width='2' height='1' fill='%23fff'/%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="assets/icon-180.png" />
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/funnel-display-var.woff2" crossorigin />
@@ -91,14 +119,15 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 .nav.solid{background:rgba(37,84,200,.62);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
 .nav.hide{transform:translateY(-100%)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-size:21px;letter-spacing:-.03em}
+.logo{display:flex;align-items:center;gap:10px;min-height:44px;font-family:var(--disp);font-size:21px;letter-spacing:-.03em;white-space:nowrap}
 .logo canvas{width:30px;height:30px;border-radius:8px;transition:transform .4s var(--spring)}
 .logo:hover canvas{transform:rotate(-8deg) scale(1.08)}
-.logo span{opacity:.75;margin-left:-10px}
+.logo span{opacity:.75;margin-left:-5px}
 .nav-l{display:flex;gap:26px;font-weight:600;font-size:15px}
-.nav-l a{opacity:.82;transition:opacity .2s}
+.nav-l a{opacity:.82;transition:opacity .2s;padding:12px 0}
 .nav-l a:hover,.nav-l a.on{opacity:1}
 @media(max-width:860px){.nav-l{display:none}}
+@media(max-width:380px){.nav .logo{font-size:17px;gap:8px}.nav .logo canvas{width:26px;height:26px}.nav .logo span{margin-left:-4px}.nav-in{gap:10px}.nav-in .btn{padding-inline:12px;font-size:13.5px}}
 
 /* hero */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:112px 0 72px}
@@ -269,7 +298,7 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 .bar .m{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font-size:12.5px;color:var(--ink-3)}
 .zero{position:absolute;left:0;right:0;bottom:var(--zero,0%);height:1px;background:rgba(15,25,60,.2);transition:bottom .6s var(--ease)}
 .res-f{margin-top:46px;font-size:13.5px;color:var(--ink-3)}
-.res-f a{color:var(--sky-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.res-f a{color:var(--sky-d);font-weight:600;text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
 @media(max-width:860px){.sim{grid-template-columns:1fr}.bars{height:170px}.bar .v{font-size:11px}}
 
 /* sobre: retrato pixelado */
@@ -321,8 +350,10 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 .hills canvas{width:100%;height:100%}
 .foot{background:#f6f7f9;color:var(--ink);padding:30px 0 34px}
 .foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
-.foot nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2);margin-top:16px}
+.foot nav{display:flex;gap:0 18px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2);margin-top:4px}
+.foot nav a{padding:12px 0}
 .foot nav a:hover{color:var(--ink)}
+.foot small a{color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;display:inline-block;padding:12px 0;margin:-12px 0}
 .foot small{display:block;color:var(--ink-3);font-size:13.5px;margin-top:16px}
 
 /* entradas */
@@ -346,7 +377,7 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="reis.dev, início"><canvas class="px" data-mark width="8" height="8"></canvas>reis<span>.dev</span></a>
+    <a class="logo" href="#top" aria-label="ReisDev Studio, início"><canvas class="px" data-mark width="8" height="8"></canvas>reisdev<span>studio</span></a>
     <nav class="nav-l" aria-label="Seções">
       <a href="#trabalhos">Trabalhos</a>
       <a href="#processo">Processo</a>
@@ -491,7 +522,7 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
       <div class="sh"><h2 data-up>Onde aprendi o ofício.</h2><p data-up style="--i:1">De equipe grande a sistema crítico, até o estúdio próprio.</p></div>
       <div class="card xp" data-up>
         <div class="xp-l" role="tablist" aria-label="Experiência">
-          <button role="tab" aria-selected="true" aria-controls="xpPanel" data-x="0"><span class="mono" style="background:#2f66db">r</span><span><b>reis.dev</b><small>Fundador · 2026 até hoje</small></span><i class="s"></i></button>
+          <button role="tab" aria-selected="true" aria-controls="xpPanel" data-x="0"><span class="mono" style="background:#2f66db">r</span><span><b>ReisDev Studio</b><small>Fundador · 2026 até hoje</small></span><i class="s"></i></button>
           <button role="tab" aria-selected="false" aria-controls="xpPanel" data-x="1"><span class="mono" style="background:#8a5c06">D</span><span><b>Delta Gestão Pública</b><small>Suporte e análise · 2025 até hoje</small></span><i class="s"></i></button>
           <button role="tab" aria-selected="false" aria-controls="xpPanel" data-x="2"><span class="mono" style="background:#4b5363">C</span><span><b>Compass UOL</b><small>Full stack · 2023 a 2024</small></span><i class="s off"></i></button>
         </div>
@@ -539,7 +570,7 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
       </figure>
       <div class="card r ab-t" data-up style="--i:1">
         <p class="big">Gosto de entender o negócio antes da tela e de entregar código que outra pessoa consiga manter.</p>
-        <p class="b">Programo desde 2021. Passei por consultoria em equipe grande, hoje cuido de sistemas de gestão pública e, em paralelo, construo meus próprios produtos sob a <b>reis.dev</b>.</p>
+        <p class="b">Programo desde 2021. Passei por consultoria em equipe grande, hoje cuido de sistemas de gestão pública e, em paralelo, construo meus próprios produtos sob a <b>ReisDev Studio</b>.</p>
         <p class="b">Trabalho remoto para todo o Brasil, sozinho ou junto com a sua equipe, mandando alterações por pull request como qualquer pessoa do time. <b>O repositório é seu desde o primeiro commit.</b></p>
         <div class="stk">
           <div class="sk"><small>Linguagem</small>TypeScript</div>
@@ -576,13 +607,14 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
       <h2 data-up>Vamos começar.</h2>
       <p data-up style="--i:1">Conte o que precisa e para quando. Respondo em até 24 horas.</p>
       <div class="cta" data-up style="--i:2">
-        <a class="btn btn-wa" href="https://wa.me/55999429756?text=Ol%C3%A1%2C%20Miguel.%20Vi%20o%20site%20reis.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
-        <a class="btn btn-g" href="mailto:miguelcastanhoreisr@gmail.com?subject=Projeto%20via%20reis.dev">Mandar e-mail</a>
+        <a class="btn btn-wa" href="https://wa.me/55999429756?text=Ol%C3%A1%2C%20Miguel.%20Vi%20o%20site%20reisdev.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+        <a class="btn btn-g" href="mailto:miguelcastanhoreisr@gmail.com?subject=Projeto%20via%20reisdev.dev">Mandar e-mail</a>
       </div>
       <div class="links" data-up style="--i:3">
         <button type="button" id="copy">Copiar e-mail</button>
         <a href="https://www.linkedin.com/in/miguel-castanho-reis-02393a269/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/tzydit" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.instagram.com/reisdev.studio/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
     <div class="hills"><canvas class="px" id="hills" aria-hidden="true"></canvas></div>
@@ -592,9 +624,9 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 <footer class="foot">
   <div class="wrap foot-in">
     <div>
-      <a class="logo" href="#top"><canvas class="px" data-mark width="8" height="8"></canvas>reis<span>.dev</span></a>
+      <a class="logo" href="#top"><canvas class="px" data-mark width="8" height="8"></canvas>reisdev<span>studio</span></a>
       <nav aria-label="Rodapé"><a href="#plano">Montar projeto</a><a href="#trabalhos">Trabalhos</a><a href="#processo">Processo</a><a href="#experiencia">Experiência</a><a href="#previsao">Simulador</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a></nav>
-      <small>© 2026 reis.dev · Miguel Castanho Reis · Rio Grande do Sul, Brasil</small>
+      <small>© 2026 ReisDev Studio · Miguel Castanho Reis · Rio Grande do Sul, Brasil · <a href="https://www.instagram.com/reisdev.studio/" target="_blank" rel="noopener">@reisdev.studio</a></small>
     </div>
     <a class="btn btn-l btn-sm" href="#top">Voltar ao topo <svg class="i"><use href="#i-up"/></svg></a>
   </div>
@@ -683,7 +715,7 @@ function plan(){const tipo=fm.tipo.value,prazo=fm.prazo.value,p=PLANS[tipo];
   sRows.innerHTML=p.rows.map(r=>`<div class="rw"><span>${r[0]}</span><div style="padding-left:${r[2]/p.wk*100}%;padding-right:${(p.wk-r[3])/p.wk*100}%"><canvas class="px" data-k="${r[1]}"></canvas></div></div>`).join('');
   sWks.innerHTML=[...Array(p.wk)].map((_,i)=>`<span>${i+1}</span>`).join('');
   sGet.innerHTML=p.get.map(g=>`<li>${CK}${g}</li>`).join('');
-  const msg=`Olá, Miguel. Montei um plano no reis.dev:\n• Projeto: ${p.t}\n• Prazo desejado: ${prazo}\nPodemos conversar?`;
+  const msg=`Olá, Miguel. Montei um plano no reisdev.dev:\n• Projeto: ${p.t}\n• Prazo desejado: ${prazo}\nPodemos conversar?`;
   sSend.href='https://wa.me/55999429756?text='+encodeURIComponent(msg);
   const cvs=$$('canvas',sRows),t0=performance.now();cancelAnimationFrame(growT);
   const grow=now=>{const k=RM?1:Math.min(1,(now-t0)/700);cvs.forEach((c,i)=>drawBar(c,+c.dataset.k,Math.min(1,Math.max(0,k*1.6-i*.2))));if(k<1)growT=requestAnimationFrame(grow);else cvs.forEach(c=>drawBar(c,+c.dataset.k,1))};
@@ -701,7 +733,7 @@ addEventListener('resize',()=>drawCal(1));
 /* experiência */
 const xs=$('#xpSky');dither(xs.getContext('2d'),120,16,SKY.slice(3),(x,y)=>y/16*.9+.05+.08*Math.sin(x*.2),0);
 const XP=[
- {m:'r',c:'#2f66db',h:'reis.dev',rl:'Fundador e desenvolvedor full stack · 2026 até hoje',p:'Meu estúdio. Conduzo o projeto inteiro, da modelagem de dados à publicação, e entrego com documentação, variáveis de ambiente descritas e deploy automatizado. Daqui saíram o FinançasIQ e o site do Dr. André.',u:['Next.js','React','Node','Firebase','Vercel'],now:'Construindo produtos próprios e de clientes'},
+ {m:'r',c:'#2f66db',h:'ReisDev Studio',rl:'Fundador e desenvolvedor full stack · 2026 até hoje',p:'Meu estúdio. Conduzo o projeto inteiro, da modelagem de dados à publicação, e entrego com documentação, variáveis de ambiente descritas e deploy automatizado. Daqui saíram o FinançasIQ e o site do Dr. André.',u:['Next.js','React','Node','Firebase','Vercel'],now:'Construindo produtos próprios e de clientes'},
  {m:'D',c:'#8a5c06',h:'Delta Gestão Pública',rl:'Suporte e análise · 2025 até hoje',p:'Sistemas onde a regra vem da lei e a falha chega no cidadão. Diagnóstico de incidentes em produção, consultas SQL e conversa direta com quem usa o sistema todo dia.',u:['SQL','Sistemas legados','Suporte N2'],now:'Mantendo sistemas públicos funcionando'},
  {m:'C',c:'#4b5363',h:'Compass UOL',rl:'Desenvolvedor full stack · 2023 a 2024',p:'Formação em equipe grande: code review como rotina, testes automatizados, Git disciplinado e entregas em ciclos curtos com metodologia ágil.',u:['JavaScript','React','Node','Testes'],now:'Concluído'}];
 const xbd=$('#xpBd'),xm=$('#xpMono');
