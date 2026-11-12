@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Kit da marca · ReisDev Studio</title>
+<!--
+  Gerador das peças da ReisDev Studio (Instagram e marca).
+  Abra por um servidor local (ex.: npx http-server na raiz do projeto) e acesse /branding/kit.html.
+  Clique nos textos para editar e use "Baixar PNG".
+  ?p=<id>&export=1 mostra só a peça em tamanho real (usado para exportar os PNGs de branding/export).
+-->
+<style>
+@font-face{font-family:'Funnel Display';font-style:normal;font-weight:300 800;font-display:block;src:url(../assets/fonts/funnel-display-var.woff2) format('woff2')}
+@font-face{font-family:'Onest';font-style:normal;font-weight:100 900;font-display:block;src:url(../assets/fonts/onest-var.woff2) format('woff2')}
+@font-face{font-family:'Doto';font-style:normal;font-weight:100 900;font-display:block;src:url(../assets/fonts/doto-var.woff2) format('woff2')}
+
+:root{
+  --sky:#2f66db; --sky-d:#1d3f9e; --sky-l:#5b8ff0;
+  --ink:#151a24; --ink-2:#4f5868; --green:#178a4a; --green-bg:#dcf3e5;
+  --disp:'Funnel Display',sans-serif; --body:'Onest',sans-serif; --dot:'Doto',monospace;
+  --card-bg:radial-gradient(120% 70% at 30% 0%,#fff 0%,rgba(255,255,255,0) 60%),linear-gradient(#fff 0%,#f7f8fb 38%,#e4e9f2 100%);
+  --card-sh:inset 0 3px 0 #fff,inset 3px 0 0 rgba(255,255,255,.95),inset -3px 0 0 rgba(30,50,110,.07),inset 0 -4px 0 rgba(30,50,110,.13),inset 0 -26px 36px -22px rgba(30,50,110,.22),0 0 0 1px rgba(15,25,60,.12),0 2px 2px rgba(15,25,60,.1),0 8px 16px rgba(15,25,60,.1),0 36px 64px -22px rgba(24,48,96,.75);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);background:#e9edf5;-webkit-font-smoothing:antialiased}
+.px{image-rendering:pixelated;image-rendering:crisp-edges;display:block}
+
+/* ---------- peças ---------- */
+.art{position:relative;overflow:hidden;color:#fff;font-family:var(--body);flex:none}
+.art.light{background:#fff;color:var(--ink)}
+.art .bg{position:absolute;inset:0}
+.art > *:not(.bg){position:absolute}
+.brand{left:80px;top:80px;display:flex;align-items:center;gap:20px;font-family:var(--disp);font-size:40px;letter-spacing:-.03em;white-space:nowrap}
+.brand span{opacity:.75;margin-left:-8px}
+.light .brand{color:var(--sky-d)}
+.kick{left:80px;font-family:var(--dot);font-weight:900;font-size:30px;letter-spacing:.04em;text-transform:uppercase}
+.h{left:80px;right:80px;font-family:var(--disp);font-weight:300;letter-spacing:-.045em;line-height:1}
+.sub{left:84px;right:80px;font-size:34px;line-height:1.3;opacity:.92}
+.light .sub{color:var(--ink-2);opacity:1}
+.foot{left:80px;right:80px;bottom:80px;display:flex;justify-content:space-between;align-items:baseline}
+.foot .u{font-family:var(--disp);font-size:34px;letter-spacing:-.02em}
+.foot .t{font-family:var(--dot);font-weight:900;font-size:28px;letter-spacing:.04em}
+.light .foot{color:var(--sky-d)}
+
+.card{background:var(--card-bg);box-shadow:var(--card-sh);border-radius:28px 28px 28px 10px;color:var(--ink)}
+.live{display:inline-flex;align-items:center;gap:12px;font-size:26px;font-weight:600;color:var(--green)}
+.live i{width:14px;height:14px;border-radius:50%;background:#2fbf6c;box-shadow:0 0 0 5px rgba(47,191,108,.22)}
+.shot{border-radius:16px;overflow:hidden;background:#f4f6f5;box-shadow:0 0 0 1px rgba(15,25,60,.12),0 14px 30px -14px rgba(15,25,60,.45)}
+.shot .bar{height:40px;display:flex;align-items:center;gap:9px;padding:0 18px;background:#eef1f6;border-bottom:1px solid rgba(15,25,60,.08)}
+.shot .bar i{width:12px;height:12px;border-radius:50%;background:#cfd6e2}
+.shot .bar span{margin-left:14px;font-size:19px;color:#5a6273}
+.shot img{display:block;width:100%;object-fit:cover;object-position:top left}
+
+/* processo */
+.gantt{left:80px;right:80px}
+.gantt .wk,.gantt .row{display:grid;grid-template-columns:330px repeat(6,1fr);align-items:center}
+.gantt .wk{padding:0 24px 14px;font-family:var(--dot);font-weight:900;font-size:23px;color:var(--sky-d);letter-spacing:.02em}
+.gantt .wk b{grid-column:1;font:600 20px var(--body);color:var(--ink-2);letter-spacing:0}
+.gantt .row{height:112px;padding:0 24px;margin-top:14px;background:#f2f6fd;border-radius:22px 22px 22px 8px;box-shadow:inset 0 0 0 1px rgba(29,63,158,.08)}
+.gantt .row h3{font:400 34px/1.1 var(--disp);letter-spacing:-.02em}
+.gantt .row p{font-size:22px;color:var(--ink-2);margin-top:8px;line-height:1.25}
+.gantt .row canvas{height:44px;border-radius:6px}
+
+/* dica */
+.rule{left:80px;right:80px;height:2px;background:rgba(255,255,255,.55)}
+.list{left:80px;right:80px;list-style:none}
+.list li{display:flex;align-items:baseline;gap:34px;font-size:38px;line-height:1.2;padding:16px 0}
+.list li b{font-family:var(--dot);font-weight:900;font-size:36px;width:60px;flex:none}
+
+/* story */
+.checks{list-style:none;display:grid;gap:22px}
+.checks li{display:flex;gap:18px;align-items:flex-start;font-size:33px;line-height:1.25}
+.checks li i{flex:none;width:36px;height:36px;border-radius:10px;background:var(--green-bg);color:var(--green);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:24px;margin-top:2px}
+.cta{display:flex;align-items:center;justify-content:center;gap:16px;height:96px;border-radius:22px 22px 22px 8px;background:#1fa855;color:#fff;font-size:34px;font-weight:700;box-shadow:inset 0 -5px 0 rgba(0,0,0,.18),inset 0 2px 0 rgba(255,255,255,.3),0 14px 24px -12px rgba(10,60,30,.6)}
+
+[data-e]{outline:none}
+.edit [data-e]:hover{box-shadow:0 0 0 3px rgba(255,214,90,.9);border-radius:4px;cursor:text}
+.edit [data-e]:focus{box-shadow:0 0 0 3px #ffd65a;border-radius:4px}
+
+/* ---------- interface ---------- */
+.app{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+.side{background:#fff;padding:28px 22px;display:flex;flex-direction:column;gap:22px;box-shadow:1px 0 0 #dbe2ee;position:sticky;top:0;height:100vh;overflow:auto}
+.side h1{font:400 26px var(--disp);letter-spacing:-.02em;display:flex;align-items:center;gap:10px;color:var(--sky-d)}
+.side h2{font:800 13px var(--dot);letter-spacing:.08em;color:var(--ink-2);margin-bottom:8px}
+.pick{display:grid;gap:6px}
+.pick button{all:unset;cursor:pointer;padding:11px 12px;border-radius:10px;font-size:15px;display:flex;justify-content:space-between;gap:8px}
+.pick button small{color:#7a8291;font-size:12.5px}
+.pick button:hover{background:#f1f4fa}
+.pick button[aria-current="true"]{background:#e6eefc;color:var(--sky-d);font-weight:600}
+.pick button:focus-visible{outline:2px solid var(--sky)}
+select,.btn{font:inherit;font-size:15px;width:100%;padding:12px 14px;border-radius:10px;border:1px solid #d4dbe8;background:#fff}
+.btn{cursor:pointer;background:var(--sky);color:#fff;border:0;font-weight:600}
+.btn.g{background:#eef2f9;color:var(--sky-d)}
+.btn:disabled{opacity:.6;cursor:progress}
+.hint{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.stage{display:grid;place-items:center;padding:32px;min-height:100vh}
+.frame{box-shadow:0 20px 50px -20px rgba(20,40,90,.45);border-radius:6px;overflow:hidden}
+.frame > .art{transform-origin:0 0}
+#off{position:fixed;left:-99999px;top:0}
+@media(max-width:800px){.app{grid-template-columns:1fr}.side{position:static;height:auto}.stage{min-height:auto}}
+.export body,body.export{background:none}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div id="off" aria-hidden="true"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script>
+/* ===== mesmo pontilhado do site (Bayer 4x4) ===== */
+const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(v=>(v+.5)/16);
+const hex=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+const SKY=['#1f4fc4','#2a5fd6','#3570e2','#4580ea','#5b92f0','#78a6f3','#9bbdf6','#bcd3f8'].map(hex);
+const HILL2=['#2a4e9e','#335dad','#3d6abc'].map(hex);
+const BARS={amber:['#e3a32b','#f2c66a','#fbe3ad'],purple:['#7a4fe0','#a07cf0','#cbb6f7'],blue:['#2f66db','#5b92f0','#9bbdf6'],green:['#178a4a','#3cbf75','#9fe2bb']};
+for(const k in BARS)BARS[k]=BARS[k].map(hex);
+
+function dither(ctx,w,h,pal,f){
+  const img=ctx.createImageData(w,h),d=img.data,n=pal.length-1;
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+    let v=f(x,y);if(v<0)v=0;if(v>.9999)v=.9999;
+    const p=v*n,i=Math.floor(p),c=pal[p-i>B[(y&3)*4+(x&3)]?i+1:i],o=(y*w+x)*4;
+    d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=255}
+  ctx.putImageData(img,0,0)}
+
+function cv(w,h,k){const c=document.createElement('canvas');c.width=Math.ceil(w/k);c.height=Math.ceil(h/k);c.className='px';c.style.width=w+'px';c.style.height=h+'px';return c}
+
+/* céu pontilhado, com colinas opcionais no rodapé (altura em px) */
+function sky(w,h,hills=0){
+  const k=4,c=cv(w,h,k),x=c.getContext('2d'),W=c.width,H=c.height;c.classList.add('bg');
+  dither(x,W,H,SKY,(X,Y)=>{const g=Y/H,band=Math.sin(X*.035+Math.sin(Y*.02)*2)*.5+.5;return g*.5+band*.07*(1-g)+.06});
+  if(hills){
+    const img=x.getImageData(0,0,W,H),d=img.data,R=hills/k,base=H-R,BACK=[SKY[4],SKY[5],SKY[6]];
+    for(let X=0;X<W;X++){
+      const back=base+R*(.14+.08*Math.sin(X*.05+1.3)+.04*Math.sin(X*.13));
+      const front=base+R*(.40-.16*Math.exp(-(((X-W*.64)/(W*.26))**2))+.03*Math.sin(X*.09));
+      for(let Y=Math.floor(back);Y<H;Y++){
+        const o=(Y*W+X)*4,b=B[(Y&3)*4+(X&3)];let c;
+        if(Y>=front){const g=(Y-front)/(H-front)+b*.5;c=HILL2[g>.55?2:g>.25?1:0]}
+        else{const g=(Y-back)/Math.max(1,front-back)+b*.6;c=BACK[g>.9?0:g>.4?1:2]}
+        d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2]}}
+    x.putImageData(img,0,0)}
+  return c}
+
+/* monograma "r" 8x8, idêntico ao do site */
+const R_PIX=[[2,2,1,5],[3,3,1,1],[4,2,2,1],[6,3,1,1]];
+function mark(size,mode){
+  const c=document.createElement('canvas');c.width=c.height=8;c.className='px';c.style.width=c.style.height=size+'px';
+  const x=c.getContext('2d');
+  if(mode==='tile'){dither(x,8,8,SKY.slice(0,5),(a,b)=>b/8*.8+.1);x.fillStyle='#fff';c.style.borderRadius=Math.round(size*.27)+'px'}
+  else x.fillStyle=mode==='blue'?'#2f66db':'#fff';
+  R_PIX.forEach(r=>x.fillRect(...r));return c}
+
+/* barra de cronograma pontilhada */
+function bar(pal,w,h){const c=cv(w,h,4),x=c.getContext('2d');dither(x,c.width,c.height,pal,(X,Y)=>Y/c.height*.85+.05);return c}
+
+/* ícones dos destaques, em pixel */
+const ICONS={
+  portfolio:['######','######','#....#','#....#','#....#','######'],
+  processo:['###....','###....','.......','..####.','..####.','.......','....###','....###'],
+  orcamento:['#######','#.....#','#.###.#','#.....#','#.###.#','#.....#','#.#.#.#'],
+  bastidores:['#.....','.#....','..#...','.#....','#..###'],
+  contato:['#######','##...##','#.#.#.#','#..#..#','#.....#','#######']
+};
+function icon(rows,cell,color='#fff'){
+  const w=rows[0].length,h=rows.length,c=document.createElement('canvas');c.width=w;c.height=h;c.className='px';
+  c.style.width=w*cell+'px';c.style.height=h*cell+'px';const x=c.getContext('2d');x.fillStyle=color;
+  rows.forEach((r,y)=>[...r].forEach((ch,X)=>{if(ch==='#')x.fillRect(X,y,1,1)}));return c}
+
+/* ===== peças ===== */
+const PROJ={
+  financasiq:{kick:'Trabalho no ar',t:'FinançasIQ.',s:'Saiba quanto vai sobrar, ou faltar, nos próximos 6 meses.',img:'../assets/work/financasiq-d.webp',url:'financasiq.com',tag:'Produto próprio · assinatura'},
+  drandre:{kick:'Trabalho no ar',t:'Dr. André Reis.',s:'Tratamentos explicados em linguagem de paciente.',img:'../assets/work/drandre-d.webp',url:'drandrereis.vercel.app',tag:'Site de cliente · cirurgião-dentista'}
+};
+let proj='financasiq';
+
+const el=(html)=>{const t=document.createElement('template');t.innerHTML=html.trim();return t.content.firstElementChild};
+const brand=(mode)=>{const b=el(`<div class="brand"><span class="m"></span>reisdev<span>studio</span></div>`);b.querySelector('.m').replaceWith(mark(52,mode));return b};
+const foot=()=>el(`<div class="foot"><span class="u" data-e>reisdev.dev</span><span class="t" data-e>SITES E SISTEMAS</span></div>`);
+
+const PIECES=[
+ {id:'post-portfolio',name:'Post · Portfólio',w:1080,h:1350,file:'post-01-portfolio',render(a){
+   const p=PROJ[proj];
+   a.append(sky(1080,1350,300),brand('tile'),
+    el(`<div class="kick" style="top:212px" data-e>${p.kick}</div>`),
+    el(`<h2 class="h" style="top:256px;font-size:124px" data-e>${p.t}</h2>`),
+    el(`<p class="sub" style="top:398px" data-e>${p.s}</p>`));
+   const c=el(`<div class="card" style="left:80px;right:80px;top:500px;padding:28px 28px 30px">
+     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px"><span class="live"><i></i><span data-e>no ar agora</span></span><span style="font-family:var(--dot);font-weight:900;font-size:24px;color:var(--sky-d)" data-e>DESDE 2026</span></div>
+     <div class="shot"><div class="bar"><i></i><i></i><i></i><span>${p.url}</span></div><img src="${p.img}" alt="" style="height:440px" /></div>
+     <div style="margin-top:24px;font-size:26px;font-weight:600;color:var(--ink-2)" data-e>${p.tag}</div></div>`);
+   a.append(c,foot())}},
+
+ {id:'post-processo',name:'Post · Processo',w:1080,h:1350,light:true,file:'post-02-processo',render(a){
+   a.append(brand('blue'),
+    el(`<div class="kick" style="top:212px;color:var(--sky)" data-e>Como trabalho</div>`),
+    el(`<h2 class="h" style="top:256px;font-size:104px;color:var(--ink)" data-e>Você acompanha<br>cada etapa.</h2>`),
+    el(`<p class="sub" style="top:478px;font-size:30px" data-e>Exemplo de um sistema em seis semanas.</p>`));
+   const rows=[['Escopo','Prazo, valor e entregas por escrito.',0,1,'amber'],['Desenho','Telas e estrutura do projeto.',0,2,'purple'],['Construção','Toda sexta, uma versão para testar.',1,5,'blue'],['No ar','Publicação e entrega do código.',5,6,'green']];
+   const g=el(`<div class="gantt" style="top:566px"><div class="wk"><b>Etapa</b>${[1,2,3,4,5,6].map(n=>`<span>SEM ${n}</span>`).join('')}</div></div>`);
+   const colW=(920-48-330)/6;
+   rows.forEach(([t,d,s,e,col])=>{const r=el(`<div class="row"><div><h3 data-e>${t}</h3><p data-e>${d}</p></div></div>`);
+     const b=bar(BARS[col],Math.round(colW*(e-s))-8,44);b.style.gridColumn=`${s+2} / ${e+2}`;b.style.marginLeft='4px';r.append(b);g.append(r)});
+   a.append(g,el(`<p class="sub" style="top:1150px;font-size:24px;color:var(--ink-2)" data-e>Cronograma ilustrativo. O prazo real vem na proposta de cada projeto.</p>`),foot())}},
+
+ {id:'post-dica',name:'Post · Dica',w:1080,h:1350,file:'post-03-dica',render(a){
+   a.append(sky(1080,1350,300),brand('tile'),
+    el(`<div class="kick" style="top:212px" data-e>Antes de começar</div>`),
+    el(`<h2 class="h" style="top:256px;font-size:118px" data-e>Seu projeto<br>começa com<br>clareza.</h2>`),
+    el(`<div class="rule" style="top:668px"></div>`),
+    el(`<ul class="list" style="top:684px"><li><b>01</b><span data-e>O que você vai receber.</span></li><li><b>02</b><span data-e>Quanto vai custar.</span></li><li><b>03</b><span data-e>Quando vai ficar pronto.</span></li></ul>`),
+    el(`<p class="h" style="top:956px;font-size:46px;letter-spacing:-.03em" data-e>Prazo fechado antes do código.</p>`),
+    foot())}},
+
+ {id:'story',name:'Story · Chamada',w:1080,h:1920,file:'story-chamada',render(a){
+   a.append(sky(1080,1920,520));
+   const b=brand('tile');b.style.top='250px';
+   const card=el(`<div class="card" style="left:80px;right:80px;top:900px;padding:44px 44px 48px">
+      <div class="live" style="margin-bottom:30px"><i></i><span data-e>agenda aberta · resposta em até 24h</span></div>
+      <ul class="checks"><li><i>✓</i><span data-e>Proposta com prazo e valor fixo antes de começar</span></li><li><i>✓</i><span data-e>Rápido no celular e pronto para o Google</span></li><li><i>✓</i><span data-e>Domínio e hospedagem no seu nome</span></li></ul>
+      <div class="cta" style="margin-top:40px" data-e>Monte seu projeto no site</div></div>`);
+   a.append(b,el(`<div class="kick" style="top:420px" data-e>Sites e sistemas</div>`),
+     el(`<h2 class="h" style="top:466px;font-size:116px" data-e>Prazo fechado<br>antes do<br>código.</h2>`),card);
+   const f=foot();f.style.bottom='270px';f.querySelector('.t').textContent='@REISDEV.STUDIO';a.append(f)}},
+
+ {id:'avatar',name:'Avatar do perfil',w:1080,h:1080,file:'avatar',render(a){const m=mark(1080,'tile');m.style.borderRadius='0';m.classList.add('bg');a.append(m)}},
+ {id:'icone',name:'Ícone do site (iPhone)',w:184,h:184,file:'icon-184',render(a){const m=mark(184,'tile');m.style.borderRadius='0';m.classList.add('bg');a.append(m)}},
+
+ ...[['portfolio','Portfólio'],['processo','Processo'],['orcamento','Orçamento'],['bastidores','Bastidores'],['contato','Contato']].map(([k,n])=>({
+   id:'destaque-'+k,name:'Destaque · '+n,w:1080,h:1920,file:'destaque-'+k,render(a){
+     const c=cv(1080,1920,4),x=c.getContext('2d');c.classList.add('bg');
+     dither(x,c.width,c.height,SKY.slice(0,6),(X,Y)=>{const dx=X-c.width/2,dy=Y-c.height/2;return Math.sqrt(dx*dx+dy*dy)/(c.height*.55)*.9+.12});
+     const i=icon(ICONS[k],52),w=parseInt(i.style.width),h=parseInt(i.style.height);
+     i.style.left=(540-w/2)+'px';i.style.top=(960-h/2)+'px';a.append(c,i)}}))
+];
+
+/* ===== montagem ===== */
+const qs=new URLSearchParams(location.search);
+if(qs.get('proj')&&PROJ[qs.get('proj')])proj=qs.get('proj');
+const EXPORT=qs.has('export');
+
+function build(p,editable){
+  const a=document.createElement('div');a.className='art'+(p.light?' light':'');a.style.width=p.w+'px';a.style.height=p.h+'px';
+  if(!p.light&&p.id!=='avatar'&&!p.id.startsWith('destaque'))a.style.background='#2f66db';
+  p.render(a);
+  a.querySelectorAll('[data-e]').forEach(e=>{if(editable){e.contentEditable='true';e.spellcheck=false}});
+  return a}
+
+const ready=a=>Promise.all([document.fonts.ready,...[...a.querySelectorAll('img')].map(i=>i.complete?0:new Promise(r=>{i.onload=i.onerror=r}))]);
+
+async function toPng(a,p){
+  await ready(a);
+  return htmlToImage.toPng(a,{width:p.w,height:p.h,pixelRatio:1,canvasWidth:p.w,canvasHeight:p.h,style:{transform:'none'}})}
+function save(url,name){const l=document.createElement('a');l.href=url;l.download=name+'.png';l.click()}
+
+if(EXPORT){
+  document.body.classList.add('export');
+  const p=PIECES.find(x=>x.id===qs.get('p'))||PIECES[0];
+  const a=build(p,false);document.getElementById('root').append(a);
+  ready(a).then(()=>{document.title='ready'});
+}else{
+  const root=document.getElementById('root');
+  root.innerHTML=`<div class="app"><aside class="side">
+    <h1>reisdev studio · kit</h1>
+    <div><h2>PEÇAS</h2><div class="pick" id="pick"></div></div>
+    <div id="projBox"><h2>PROJETO DO POST</h2><select id="proj">${Object.keys(PROJ).map(k=>`<option value="${k}">${PROJ[k].t.replace(/\.$/,'')}</option>`).join('')}</select></div>
+    <p class="hint">Clique em qualquer texto da peça para editar. As alterações valem até recarregar a página.</p>
+    <button class="btn" id="dl">Baixar PNG</button>
+    <button class="btn g" id="all">Baixar todas as peças</button>
+    <p class="hint">Avatar: envie como foto de perfil. Destaques: publique como story e use como capa. Os PNGs prontos também estão em <b>branding/export</b>.</p>
+  </aside><main class="stage"><div class="frame" id="frame"></div></main></div>`;
+  let cur=PIECES[0],art;
+  const pick=document.getElementById('pick'),frame=document.getElementById('frame');
+  PIECES.forEach(p=>{const b=el(`<button type="button"><span>${p.name}</span><small>${p.w}×${p.h}</small></button>`);b.onclick=()=>show(p);b.dataset.id=p.id;pick.append(b)});
+  function fit(){const st=document.querySelector('.stage'),s=Math.min((st.clientWidth-64)/cur.w,(innerHeight-64)/cur.h,1);
+    art.style.transform=`scale(${s})`;frame.style.width=cur.w*s+'px';frame.style.height=cur.h*s+'px'}
+  function show(p){cur=p;frame.innerHTML='';art=build(p,true);frame.append(art);fit();
+    pick.querySelectorAll('button').forEach(b=>b.setAttribute('aria-current',b.dataset.id===p.id));
+    document.getElementById('projBox').style.display=p.id==='post-portfolio'?'':'none';
+    try{history.replaceState(null,'','?p='+p.id)}catch(e){}}
+  addEventListener('resize',()=>fit());
+  document.getElementById('proj').onchange=e=>{proj=e.target.value;show(cur)};
+  document.getElementById('proj').value=proj;
+  document.getElementById('dl').onclick=async e=>{e.target.disabled=true;try{save(await toPng(art,cur),cur.file+(cur.id==='post-portfolio'?'-'+proj:''))}finally{e.target.disabled=false}};
+  document.getElementById('all').onclick=async e=>{e.target.disabled=true;const off=document.getElementById('off');
+    try{for(const p of PIECES){off.innerHTML='';const a=build(p,false);off.append(a);save(await toPng(a,p),p.file+(p.id==='post-portfolio'?'-'+proj:''));await new Promise(r=>setTimeout(r,300))}}
+    finally{off.innerHTML='';e.target.disabled=false}};
+  show(PIECES.find(x=>x.id===qs.get('p'))||PIECES[0]);
+}
+</script>
+</body>
+</html>
