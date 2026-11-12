@@ -4,10 +4,10 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Miguel Reis — Desenvolvedor Full Stack · reis.dev</title>
-<meta name="description" content="Miguel Castanho Reis, desenvolvedor full stack no Rio Grande do Sul. Criador do FinançasIQ, sites para clientes e sistemas de gestão pública. TypeScript, React, Node e Python." />
-<meta name="theme-color" content="#0b0b0c" />
+<meta name="description" content="Miguel Castanho Reis, desenvolvedor full stack no Rio Grande do Sul. Sites e sistemas web do banco de dados ao deploy, com prazo e valor fechados antes de começar. Criador do FinançasIQ." />
+<meta name="theme-color" content="#2f66db" />
 <meta property="og:title" content="Miguel Reis — Desenvolvedor Full Stack" />
-<meta property="og:description" content="Produtos web do banco de dados ao deploy. FinançasIQ, Dr. André Reis, Delta Gestão Pública." />
+<meta property="og:description" content="Monte o plano do seu projeto e mande no WhatsApp. Sites e sistemas web do banco de dados ao deploy." />
 <meta property="og:type" content="profile" />
 <meta property="og:image" content="https://reis.dev/assets/og.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -19,869 +19,737 @@
 <link rel="canonical" href="https://reis.dev/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="author" content="Miguel Castanho Reis" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0b0c'/%3E%3Ccircle cx='32' cy='32' r='10' fill='%23c8ff3d'/%3E%3C/svg%3E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' shape-rendering='crispEdges'%3E%3Crect width='8' height='8' fill='%232f66db'/%3E%3Crect x='2' y='2' width='1' height='4' fill='%23fff'/%3E%3Crect x='3' y='3' width='1' height='1' fill='%23fff'/%3E%3Crect x='4' y='2' width='2' height='1' fill='%23fff'/%3E%3C/svg%3E" />
 <link rel="apple-touch-icon" href="assets/icon-180.png" />
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/bricolage-var.woff2" crossorigin />
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/instrument-serif-italic.woff2" crossorigin />
-<link rel="preload" as="image" href="assets/work/financasiq-d.webp" />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/funnel-display-var.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/onest-var.woff2" crossorigin />
 <script>document.documentElement.classList.add('js')</script>
 <style>
-@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/bricolage-var.woff2) format('woff2')}
-@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(assets/fonts/instrument-serif-italic.woff2) format('woff2')}
+@font-face{font-family:'Funnel Display';font-style:normal;font-weight:300 800;font-display:swap;src:url(assets/fonts/funnel-display-var.woff2) format('woff2')}
+@font-face{font-family:'Onest';font-style:normal;font-weight:100 900;font-display:swap;src:url(assets/fonts/onest-var.woff2) format('woff2')}
+@font-face{font-family:'Doto';font-style:normal;font-weight:100 900;font-display:swap;src:url(assets/fonts/doto-var.woff2) format('woff2')}
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0b0b0c; --bg2:#111113; --bg3:#18181b; --card:#141416;
-  --ink:#f3f3ef; --mut:#a1a1a8; --dim:#62626a;
-  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
-  --acc:#c8ff3d; --acc-ink:#0b0b0c; --neg:#ff6b5e;
-  --sans:'Bricolage Grotesque',system-ui,sans-serif;
-  --serif:'Instrument Serif',Georgia,serif;
-  --m:clamp(20px,4vw,64px);
-  --max:1360px;
-  --ease:cubic-bezier(.22,1,.36,1);
+  --sky:#2f66db; --sky-d:#1d3f9e; --sky-l:#5b8ff0;
+  --ink:#151a24; --ink-2:#4f5868; --ink-3:#5a6273;
+  --on-sky:#ffffff; --on-sky-2:#f3f7ff;
+  --green:#178a4a; --green-bg:#dcf3e5; --red:#c93a2e;
+  --chip:#eef1f7; --rule:rgba(15,25,60,.1);
+  --disp:'Funnel Display','Onest',system-ui,sans-serif;
+  --body:'Onest',system-ui,sans-serif;
+  --dot:'Doto',ui-monospace,monospace;
+  --max:1140px; --m:clamp(18px,4vw,40px);
+  --ease:cubic-bezier(.22,1,.36,1); --spring:cubic-bezier(.34,1.56,.64,1);
+  --card-bg:radial-gradient(120% 70% at 30% 0%,#fff 0%,rgba(255,255,255,0) 60%),linear-gradient(#fff 0%,#f7f8fb 38%,#e4e9f2 100%);
+  --card-sh:inset 0 3px 0 #fff,inset 3px 0 0 rgba(255,255,255,.95),inset -3px 0 0 rgba(30,50,110,.07),inset 0 -4px 0 rgba(30,50,110,.13),inset 0 -26px 36px -22px rgba(30,50,110,.22),0 0 0 1px rgba(15,25,60,.12),-1px -1px 0 1px rgba(255,255,255,.35),0 2px 2px rgba(15,25,60,.1),0 8px 16px rgba(15,25,60,.1),0 36px 64px -22px rgba(24,48,96,.75);
 }
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scrollbar-color:#9bbdf6 #1f4fc4}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
-body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
-::selection{background:var(--acc);color:var(--acc-ink)}
+::-webkit-scrollbar{width:12px}
+::-webkit-scrollbar-track{background:#1f4fc4}
+::-webkit-scrollbar-thumb{background:#9bbdf6;border:3px solid #1f4fc4;border-radius:8px}
+body{background:var(--sky);color:var(--on-sky);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip;caret-color:var(--sky)}
+::selection{background:#fff;color:var(--sky-d)}
+.card ::selection{background:var(--sky);color:#fff}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
-img{display:block;max-width:100%}
-:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:4px}
-em.s{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+img,canvas{display:block;max-width:100%}
+svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:8px}
+.card :focus-visible{outline-color:var(--sky)}
 .num{font-variant-numeric:tabular-nums}
 .wrap{width:min(var(--max),100% - 2 * var(--m));margin-inline:auto}
+.px{image-rendering:pixelated;image-rendering:crisp-edges}
 
-/* grão por cima de tudo */
-.grain{position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1s steps(3) infinite}
-@keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-3%,2%)}66%{transform:translate(2%,-3%)}100%{transform:translate(0,0)}}
+/* céu pixelado, fixo atrás da página */
+#sky{position:fixed;inset:0;width:100%;height:100%;z-index:-2}
 
-/* ── loader ── */
-.loader{position:fixed;inset:0;z-index:100;background:var(--bg);display:none;flex-direction:column;justify-content:flex-end;padding:var(--m)}
-.js .loader{display:flex}
-.loader .lc{display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
-.loader .ln{font-size:clamp(15px,1.2vw,18px);color:var(--mut);max-width:260px}
-.loader .ln b{display:block;color:var(--ink);font-weight:500}
-.loader .cnt{font-size:clamp(88px,16vw,260px);font-weight:500;letter-spacing:-.06em;line-height:.8}
-.loader .bar{height:2px;background:var(--line);margin-top:28px;overflow:hidden}
-.loader .bar i{display:block;height:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+/* card de plástico */
+.card{position:relative;color:var(--ink);background:var(--card-bg);box-shadow:var(--card-sh);border-radius:24px 24px 24px 8px}
+.card.r{border-radius:24px 24px 8px 24px}
+.card h3{font-family:var(--disp);font-weight:400;letter-spacing:-.025em;line-height:1.12}
 
-/* ── cursor ── */
-.cur,.cur-r{position:fixed;top:0;left:0;z-index:95;pointer-events:none;border-radius:50%;display:none}
-.cur{width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--acc)}
-.cur-r{width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid rgba(255,255,255,.35);align-items:center;justify-content:center;font-size:13px;font-weight:600;color:var(--acc-ink);transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background-color .25s,border-color .25s}
-.cur-r span{opacity:0;transition:opacity .2s}
-.cur-r.hov{width:64px;height:64px;margin:-32px 0 0 -32px;border-color:var(--acc)}
-.cur-r.view{width:96px;height:96px;margin:-48px 0 0 -48px;background:var(--acc);border-color:var(--acc)}
-.cur-r.view span{opacity:1}
-@media(pointer:fine){.has-cursor .cur{display:block}.has-cursor .cur-r{display:flex}}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:14px;font-weight:600;font-size:16px;transition:transform .25s var(--spring),background-color .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:translateY(2px) scale(.98)}
+.btn svg.i{font-size:18px;transition:transform .3s var(--ease)}
+.btn:hover svg.i{transform:translateX(3px)}
+.btn-w{background:linear-gradient(#fff,#eef1f7);color:var(--ink);box-shadow:inset 0 -3px 0 rgba(30,50,110,.14),0 0 0 1px rgba(15,25,60,.1),0 8px 18px -6px rgba(15,25,60,.45)}
+.btn-w:hover{transform:translateY(-2px)}
+.btn-g{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-g:hover{background:rgba(255,255,255,.24)}
+.btn-wa{background:linear-gradient(#168a47,#0e6a35);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -3px 0 rgba(0,0,0,.15),0 6px 14px -4px rgba(23,138,74,.55)}
+.btn-wa:hover{transform:translateY(-2px)}
+.btn-d{background:linear-gradient(#3b4250,#151a24);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 4px 10px -2px rgba(0,0,0,.4)}
+.btn-l{background:linear-gradient(#fff,#f1f3f8);color:var(--ink);box-shadow:inset 0 -2px 0 rgba(30,50,110,.12),0 0 0 1px rgba(15,25,60,.14)}
+.btn-sm{height:42px;padding:0 16px;font-size:14.5px;border-radius:12px}
 
-/* ── nav ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:80;transition:transform .5s var(--ease),background-color .4s}
-.nav.solid{background:rgba(11,11,12,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:transform .5s var(--ease),background-color .4s}
+.nav.solid{background:rgba(37,84,200,.62);backdrop-filter:blur(14px) saturate(1.3);-webkit-backdrop-filter:blur(14px) saturate(1.3)}
 .nav.hide{transform:translateY(-100%)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
-.logo{display:flex;align-items:center;gap:12px;font-weight:600;font-size:18px;letter-spacing:-.02em}
-.logo .mk{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-size:13px;font-weight:700;letter-spacing:-.02em;transition:transform .5s var(--ease),background-color .3s}
-.logo:hover .mk{transform:rotate(-12deg) scale(1.08);background:var(--acc)}
-.nav-l{display:flex;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:99px;padding:5px}
-.nav-l a{font-size:14px;color:var(--mut);padding:8px 16px;border-radius:99px;transition:color .25s,background-color .25s}
-.nav-l a:hover,.nav-l a.on{color:var(--ink);background:rgba(255,255,255,.07)}
-.nav-r{display:flex;align-items:center;gap:18px}
-.avail{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--mut)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--acc);position:relative;flex:none;display:inline-block}
-.dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--acc);animation:ping 2s var(--ease) infinite}
-@keyframes ping{0%{transform:scale(.6);opacity:1}100%{transform:scale(2.2);opacity:0}}
-@media(max-width:980px){.nav-l,.avail{display:none}}
+.nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-size:21px;letter-spacing:-.03em}
+.logo canvas{width:30px;height:30px;border-radius:8px;transition:transform .4s var(--spring)}
+.logo:hover canvas{transform:rotate(-8deg) scale(1.08)}
+.logo span{opacity:.75;margin-left:-10px}
+.nav-l{display:flex;gap:26px;font-weight:600;font-size:15px}
+.nav-l a{opacity:.82;transition:opacity .2s}
+.nav-l a:hover,.nav-l a.on{opacity:1}
+@media(max-width:860px){.nav-l{display:none}}
 
-/* ── botões ── */
-.btn{position:relative;display:inline-flex;align-items:center;gap:12px;height:52px;padding:0 26px;border-radius:99px;font-weight:500;font-size:15px;overflow:hidden;isolation:isolate;transition:transform .2s var(--ease),color .35s}
-.btn:active{transform:scale(.97)}
-.btn .t{position:relative;display:block;overflow:hidden;height:1.4em;line-height:1.4em}
-.btn .t span{display:block;transition:transform .45s var(--ease)}
-.btn .t span+span{position:absolute;top:100%;left:0}
-.btn:hover .t span{transform:translateY(-100%)}
-.btn .ic{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:14px;transition:transform .45s var(--ease)}
-.btn:hover .ic{transform:rotate(45deg)}
-.btn-p{background:var(--acc);color:var(--acc-ink);padding-right:12px}
-.btn-p .ic{background:var(--acc-ink);color:var(--acc)}
-.btn-g{border:1px solid var(--line2);color:var(--ink)}
-.btn-g::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--ink);border-radius:inherit;transform:translateY(101%);transition:transform .45s var(--ease)}
-.btn-g:hover{color:var(--bg)}
-.btn-g:hover::before{transform:none}
-.btn-sm{height:44px;padding:0 20px;font-size:14px}
-.btn-sm.btn-p{padding-right:8px}
+/* hero */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:112px 0 72px}
+.hero-g{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(30px,5vw,72px);align-items:center}
+.hero h1{font-family:var(--disp);font-weight:400;font-size:clamp(36px,3.9vw,57px);line-height:.98;letter-spacing:-.04em;text-wrap:balance}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .ln>span{display:inline-block;white-space:nowrap}
+.hero .sub{margin-top:22px;font-size:clamp(18px,1.5vw,20px);color:var(--on-sky-2);max-width:460px;line-height:1.5}
+.hero .cta{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.avail{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:15px;font-weight:600}
+.avail i{width:9px;height:9px;border-radius:50%;background:#6cf0a0;box-shadow:0 0 0 3px rgba(108,240,160,.25)}
+@media(max-width:960px){.hero-g{grid-template-columns:1fr}.hero{padding-top:100px}}
 
-/* ── hero ── */
-.hero{position:relative;padding-top:clamp(130px,16vh,190px)}
-.glow{position:absolute;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.5}
-.hero .glow{width:60vw;height:40vw;left:20vw;top:52vh;background:radial-gradient(closest-side,rgba(200,255,61,.22),transparent)}
-.h-top{display:flex;justify-content:space-between;gap:24px;font-size:14px;color:var(--mut);margin-bottom:clamp(28px,4vw,48px)}
-.h-top span{display:flex;align-items:center;gap:10px}
-.hero h1{font-size:clamp(54px,10.2vw,172px);font-weight:500;letter-spacing:-.055em;line-height:.88}
-.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
-.hero h1 .ln>span{display:inline-block}
-.hero h1 .r{text-align:right}
-.hero h1 em.s{font-size:1.04em;letter-spacing:-.03em;color:var(--acc)}
-.h-bot{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end;margin-top:clamp(36px,5vw,64px)}
-.h-bot p{font-size:clamp(18px,1.5vw,22px);color:var(--mut);max-width:520px;line-height:1.45}
-.h-bot p b{color:var(--ink);font-weight:500}
-.h-cta{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
-@media(max-width:820px){.h-bot{grid-template-columns:1fr}.h-cta{justify-content:flex-start}.h-top .hide-m{display:none}.hero h1 .r{text-align:left}}
+/* planejador */
+.plan-wrap{position:relative;padding-bottom:42px}
+.plan{padding:22px 24px 24px}
+.plan-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:14px;box-shadow:0 1px 0 var(--rule)}
+.plan-h h2{font-family:var(--disp);font-weight:500;font-size:20px;letter-spacing:-.02em}
+.plan-h small{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-3);font-weight:500}
+.plan-h small i{width:7px;height:7px;border-radius:2px;background:#e3a32b}
+.q{margin-top:16px;border:0}
+.q legend{font-size:14px;font-weight:600;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{position:relative;display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:11px;font-size:14.5px;font-weight:500;background:var(--chip);box-shadow:inset 0 0 0 1px rgba(15,25,60,.09),inset 0 -2px 0 rgba(15,25,60,.06);transition:background-color .2s,box-shadow .2s;cursor:pointer}
+.chip:hover{background:#e4e9f3}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip:has(input:checked){background:linear-gradient(#fff,#f3f6fc);box-shadow:inset 0 0 0 2px var(--sky),0 4px 10px -4px rgba(47,102,219,.5);color:var(--sky-d)}
+.chip:has(input:focus-visible){outline:2px solid var(--sky);outline-offset:2px}
+.chip small{font-size:12.5px;color:var(--ink-3);font-weight:500}
+.sched{margin-top:18px;border-radius:14px;background:#f3f5f9;box-shadow:inset 0 0 0 1px rgba(15,25,60,.08);padding:14px 14px 12px}
+.sched-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sched-h b{font-family:var(--disp);font-weight:500;font-size:17px;letter-spacing:-.01em}
+.sched-h span{font-family:var(--dot);font-weight:800;font-size:15px;color:var(--sky-d)}
+.rows{display:grid;gap:7px;margin-top:12px}
+.rw{display:grid;grid-template-columns:88px 1fr;gap:10px;align-items:center;font-size:13px;color:var(--ink-2)}
+.rw canvas{width:100%;height:14px;border-radius:3px}
+.wks{display:grid;grid-template-columns:88px 1fr;gap:10px;margin-top:8px;font-family:var(--dot);font-weight:800;font-size:12.5px;color:var(--ink-3)}
+.wks div{display:flex;justify-content:space-around}
+.get{margin-top:14px;display:grid;gap:7px}
+.get li{list-style:none;display:flex;gap:9px;align-items:flex-start;font-size:14.5px;color:#283040}
+.ck{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--green-bg);color:var(--green);flex:none;margin-top:1px}
+.ck svg.i{font-size:11px;stroke-width:3.2}
+.plan .send{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.plan .send .btn-wa{flex:1}
+.live{position:absolute;right:-14px;bottom:0;width:min(250px,62%);padding:10px 10px 12px;display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:center;z-index:2;transition:transform .3s var(--spring)}
+.live:hover{transform:translateY(-3px)}
+.live img{width:72px;height:48px;object-fit:cover;object-position:top left;border-radius:8px;box-shadow:0 0 0 1px rgba(15,25,60,.12)}
+.live b{display:block;font-size:14px;font-weight:600}
+.live small{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--green);font-weight:600}
+.live small i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+@media(max-width:960px){.plan-wrap{padding-bottom:0}.live{position:relative;right:auto;bottom:auto;margin:12px 0 0 auto;width:min(260px,80%)}}
+@media(max-width:520px){.plan{padding:18px 16px 20px}.rw,.wks{grid-template-columns:70px 1fr}.plan .send .btn{flex:1 1 100%;white-space:normal;height:auto;min-height:52px;padding:10px 16px}}
 
-/* palco de mockups */
-.stage{position:relative;margin-top:clamp(56px,7vw,110px);perspective:1800px;padding-bottom:40px}
-.stage-in{position:relative;will-change:transform}
-.stage .ph,.stage .chip{z-index:2}
-.br{position:relative;border-radius:14px;background:#1b1b1e;border:1px solid var(--line2);overflow:hidden;box-shadow:0 60px 120px -30px rgba(0,0,0,.8),0 0 0 1px rgba(0,0,0,.4)}
-.br-bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;background:#1f1f23;border-bottom:1px solid var(--line)}
-.br-bar i{width:11px;height:11px;border-radius:50%;background:#3a3a40;flex:none}
-.br-bar i:nth-child(1){background:#ff5f57}.br-bar i:nth-child(2){background:#febc2e}.br-bar i:nth-child(3){background:#28c840}
-.br-bar .url{margin:0 auto;transform:translateX(-24px);font-size:12px;color:var(--mut);background:#2a2a2f;border-radius:6px;padding:4px 40px;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.br-bar .url::before{content:'';width:8px;height:9px;border:1.5px solid var(--mut);border-radius:2px 2px 1px 1px}
-.br-sc{position:relative;aspect-ratio:16/10;overflow:hidden;background:#f4f6f5}
-.br-sc img{width:100%;height:100%;object-fit:cover;object-position:top}
-.ph{position:relative;border-radius:40px;background:#050505;padding:9px;border:1px solid var(--line2);box-shadow:0 50px 100px -20px rgba(0,0,0,.85)}
-.ph::before{content:'';position:absolute;top:18px;left:50%;width:30%;height:22px;margin-left:-15%;background:#050505;border-radius:99px;z-index:2}
-.ph-sc{border-radius:32px;overflow:hidden;aspect-ratio:390/844;background:#f4f6f5}
-.ph-sc img{width:100%;height:100%;object-fit:cover;object-position:top}
-.stage .br{width:78%;margin-left:4%;cursor:pointer}
-.stage .ph{position:absolute;width:21%;right:3%;bottom:-6%}
-.chip{position:absolute;display:flex;align-items:center;gap:12px;background:rgba(20,20,22,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line2);border-radius:16px;padding:14px 18px;font-size:14px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
-.chip b{display:block;font-weight:600;font-size:16px}
-.chip small{color:var(--mut);font-size:13px}
-.chip .ico{width:38px;height:38px;border-radius:10px;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;font-weight:700}
-.chip.c1{left:-1%;top:58%}
-.chip.c2{right:20%;top:-5%}
-@media(max-width:760px){.stage .br{width:100%;margin:0}.stage .ph{width:34%;right:-2%;bottom:-14%}.chip.c2{display:none}.chip.c1{left:4%;top:auto;bottom:-12%;padding:10px 14px}.stage{padding-bottom:70px}.br-bar .url{padding:4px 14px}}
+/* seções */
+.sec{position:relative;padding:clamp(96px,11vw,150px) 0}
+.sh{text-align:center;max-width:780px;margin:0 auto clamp(40px,5vw,64px)}
+.sh h2{font-family:var(--disp);font-weight:300;font-size:clamp(42px,5.4vw,74px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.sh p{margin:18px auto 0;color:var(--on-sky-2);font-size:clamp(17px,1.4vw,19px);max-width:540px}
 
-/* ── marquee ── */
-.mq{padding:clamp(60px,8vw,110px) 0 clamp(40px,5vw,70px);overflow:hidden}
-.mq-row{display:flex;width:max-content;will-change:transform}
-.mq-row+.mq-row{margin-top:10px}
-.mq-row span{display:flex;align-items:center;gap:clamp(18px,2.5vw,36px);padding-right:clamp(18px,2.5vw,36px);font-size:clamp(40px,6.4vw,104px);font-weight:500;letter-spacing:-.05em;line-height:1.05;white-space:nowrap}
-.mq-row span::after{content:'';width:.22em;height:.22em;border-radius:50%;background:var(--acc)}
-.mq-row.o span{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28)}
-.mq-row.o span::after{background:transparent;border:1px solid rgba(255,255,255,.28)}
+/* trabalhos */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.pj{padding:clamp(20px,2.4vw,30px);overflow:hidden;display:flex;flex-direction:column}
+.pj h3{font-size:clamp(28px,2.8vw,38px)}
+.pj .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;font-size:14px;color:var(--ink-3)}
+.pj .meta .on{display:inline-flex;align-items:center;gap:6px;color:var(--green);font-weight:600}
+.pj .meta .on i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.pj .ds{color:var(--ink-2);margin-top:12px;font-size:15.5px;max-width:540px}
+.pj .tg{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.pj .tg span{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:8px;background:var(--chip);box-shadow:inset 0 0 0 1px rgba(15,25,60,.08);color:var(--ink-2)}
+.pj .go{margin-top:18px;display:flex;gap:8px;flex-wrap:wrap}
+.shot{margin-top:22px;border-radius:12px;overflow:hidden;background:#f4f6f5;box-shadow:0 0 0 1px rgba(15,25,60,.12),0 12px 30px -12px rgba(15,25,60,.45)}
+.shot .bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:linear-gradient(#f4f6fa,#e8ecf3);box-shadow:inset 0 -1px 0 rgba(15,25,60,.08)}
+.shot .bar i{width:9px;height:9px;border-radius:50%;background:#cfd5e1}
+.shot .bar i:nth-child(1){background:#ff5f57}.shot .bar i:nth-child(2){background:#febc2e}.shot .bar i:nth-child(3){background:#28c840}
+.shot .bar span{margin:0 auto;font-size:11.5px;color:var(--ink-3);transform:translateX(-18px)}
+.shot .sc{aspect-ratio:16/10;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s var(--ease)}
+.pj:hover .shot img{transform:scale(1.03)}
+.pj-a{grid-column:span 8}
+.pj-p{grid-column:span 4;color:#fff;background:linear-gradient(180deg,#1d3f9e,#2f66db 60%,#5b8ff0);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),inset 0 2px 0 rgba(255,255,255,.25),0 36px 64px -22px rgba(24,48,96,.75)}
+.pj-p .ds{color:var(--on-sky-2)}
+.phone{margin:22px auto -60px;width:min(230px,78%);border-radius:34px;padding:8px;background:#0c0c0e;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 30px 60px -20px rgba(0,0,0,.6);position:relative}
+.phone::before{content:'';position:absolute;top:16px;left:50%;width:30%;height:18px;margin-left:-15%;border-radius:99px;background:#0c0c0e;z-index:2}
+.phone .sc{border-radius:27px;overflow:hidden;aspect-ratio:390/844}
+.phone img{width:100%;height:100%;object-fit:cover;object-position:top}
+.pj-b,.pj-c{grid-column:span 6}
+.mtc{margin-top:22px;border-radius:12px;background:#0d1020;color:#e8ecff;padding:16px;display:grid;grid-template-columns:1.2fr 1fr;gap:12px;font-size:13px;box-shadow:0 12px 30px -12px rgba(15,25,60,.6)}
+.mtc-c{background:#151a33;border-radius:10px;padding:14px;display:flex;flex-direction:column}
+.mtc small{color:#9aa4cf;font-size:11.5px}
+.mtc .tot{font-size:24px;font-weight:600;letter-spacing:-.03em;margin:2px 0}
+.mtc .up{color:#6be3a4;font-size:12px}
+.mtc svg{width:100%;flex:1;min-height:70px;margin-top:8px}
+.mtc-l{display:grid;gap:8px;margin-top:8px}
+.mtc-i{display:flex;align-items:center;gap:8px;background:#1c2343;border-radius:8px;padding:8px 10px}
+.mtc-i i{width:22px;height:22px;border-radius:6px;flex:none;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:11px;color:#0d1020}
+.mtc-i span{margin-left:auto}
+.mtc-cap{font-size:12.5px;color:var(--ink-3);margin-top:10px}
+@media(max-width:940px){.pj-a,.pj-p,.pj-b,.pj-c{grid-column:1/-1}.phone{margin-bottom:-40px}}
+@media(max-width:560px){.mtc{grid-template-columns:1fr}}
 
-/* ── cabeçalho de seção ── */
-.sec{position:relative;padding:clamp(100px,12vw,180px) 0}
-.sh{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:clamp(48px,6vw,90px)}
-.sh h2{font-size:clamp(44px,6.6vw,108px);font-weight:500;letter-spacing:-.05em;line-height:.92;max-width:12ch}
-.sh h2 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
-.sh h2 .w>span{display:inline-block}
-.sh .side{max-width:360px;color:var(--mut);font-size:16px;padding-bottom:10px}
-.sh .count{font-size:clamp(18px,1.6vw,24px);color:var(--mut);font-weight:400}
-.lbl{display:inline-flex;align-items:center;gap:10px;font-size:14px;color:var(--mut);margin-bottom:22px}
-.lbl::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc)}
-@media(max-width:760px){.sh{flex-direction:column;align-items:flex-start}}
+/* processo: calendário */
+.cal{padding:clamp(20px,2.6vw,34px)}
+.cal-g{display:grid;grid-template-columns:150px repeat(6,1fr);gap:10px 6px;align-items:center}
+.cal-g .hd{font-family:var(--dot);font-weight:800;font-size:13px;color:var(--ink-3);text-align:center;padding-bottom:4px}
+.cal-g .lb{grid-column:1;font-size:14.5px;font-weight:600;color:var(--ink)}
+.cal-g .lb small{display:block;font-weight:500;font-size:12.5px;color:var(--ink-3)}
+.cal-g canvas{width:100%;height:30px;border-radius:5px}
+.cal-g .bar-cell{grid-column:var(--c)}
+.fri{display:flex;justify-content:space-around}
+.fri i{width:10px;height:10px;border-radius:3px;background:var(--sky);box-shadow:0 0 0 3px rgba(47,102,219,.18)}
+.cal-n{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:28px;padding-top:24px;box-shadow:0 -1px 0 var(--rule)}
+.cal-n h3{font-size:22px}
+.cal-n p{color:var(--ink-2);font-size:15px;margin-top:6px}
+.cal-n .rs{display:flex;gap:8px;align-items:flex-start;margin-top:12px;font-weight:600;font-size:15px;color:var(--ink)}
+.cal-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -6px;padding:0 6px 6px}
+@media(max-width:860px){.cal-n{grid-template-columns:1fr}.cal-g{min-width:620px}}
 
-/* ── projetos ── */
-.case{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,90px);padding:clamp(40px,5vw,70px) 0 clamp(80px,9vw,140px);border-top:1px solid var(--line)}
-.case-info{position:sticky;top:110px;align-self:start}
-.case-n{display:flex;justify-content:space-between;font-size:14px;color:var(--mut);margin-bottom:26px}
-.case h3{font-size:clamp(44px,5.4vw,88px);font-weight:500;letter-spacing:-.05em;line-height:.92}
-.case h3 em.s{color:var(--acc)}
-.case .desc{margin-top:22px;color:var(--mut);font-size:clamp(16px,1.25vw,18px);max-width:460px}
-.case .desc b{color:var(--ink);font-weight:500}
-.facts{margin-top:30px;border-top:1px solid var(--line);max-width:460px}
-.facts div{display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
-.facts dt{color:var(--mut);flex:none}
-.facts dd{text-align:right}
-.live{display:inline-flex;align-items:center;gap:8px}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.tag{font-size:13px;padding:6px 12px;border-radius:99px;border:1px solid var(--line2);color:var(--mut);transition:color .25s,border-color .25s,background-color .25s}
-.tag:hover{color:var(--acc-ink);background:var(--acc);border-color:var(--acc)}
-.case .btn{margin-top:30px}
-.case-media{display:grid;gap:clamp(18px,2vw,28px)}
-.mwrap{position:relative;border-radius:22px;padding:clamp(18px,3.4vw,52px);background:var(--card);border:1px solid var(--line);overflow:hidden}
-.mwrap::before{content:'';position:absolute;inset:0;background:radial-gradient(70% 60% at 50% 100%,var(--tint,rgba(200,255,61,.14)),transparent 70%);pointer-events:none}
-.mwrap .br{position:relative;cursor:pointer}
-.mrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.65fr);gap:clamp(18px,2vw,28px)}
-.mrow .mwrap{display:flex;align-items:center;justify-content:center}
-.mrow .ph{width:min(260px,82%)}
-.mcap{display:block;margin-top:16px;font-size:13px;color:var(--mut);position:relative}
-@media(max-width:980px){.case{grid-template-columns:1fr;row-gap:48px}.case-info{position:static}}
-@media(max-width:600px){.mrow{grid-template-columns:1fr}.mrow .ph{width:52%}}
+/* experiência */
+.xp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:14px;padding:14px}
+.xp-l{display:grid;gap:4px;align-content:start}
+.xp-l button{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;text-align:left;padding:10px 12px;border-radius:12px;transition:background-color .2s}
+.xp-l button:hover{background:rgba(15,25,60,.04)}
+.xp-l button[aria-selected="true"]{background:var(--chip);box-shadow:inset 0 0 0 1px rgba(15,25,60,.08)}
+.mono{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-family:var(--disp);font-weight:600;font-size:15px;color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.3)}
+.xp-l b{display:block;font-weight:600;font-size:15px}
+.xp-l small{display:block;font-size:13px;color:var(--ink-3)}
+.xp-l .s{width:8px;height:8px;border-radius:2px;background:var(--green)}
+.xp-l .s.off{background:#c3c9d6}
+.xp-d{border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px rgba(15,25,60,.08);overflow:hidden}
+.xp-d .top{height:64px}
+.xp-d .top canvas{width:100%;height:100%}
+.xp-d .mono{width:58px;height:58px;font-size:22px;border-radius:15px;margin:-30px 0 0 20px;position:relative;box-shadow:0 0 0 4px #fff,inset 0 -3px 0 rgba(0,0,0,.18),0 8px 16px -6px rgba(15,25,60,.4)}
+.xp-d .bd{padding:14px 20px 22px;transition:opacity .2s}
+.xp-d .bd.sw{opacity:0}
+.xp-d h3{font-size:26px}
+.xp-d .rl{font-size:14px;color:var(--ink-3);margin-top:2px}
+.xp-d p{font-size:15.5px;color:#283040;margin-top:12px}
+.xp-d .kv{display:grid;grid-template-columns:70px 1fr;gap:8px 12px;margin-top:16px;font-size:14px;align-items:center}
+.xp-d .kv dt{color:var(--ink-3)}
+.xp-d .kv dd{display:flex;gap:6px;flex-wrap:wrap}
+.xp-d .kv dd span{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:7px;background:var(--chip);color:var(--ink-2)}
+@media(max-width:820px){.xp{grid-template-columns:1fr}}
 
-/* fragmento de interface do Money Tracker */
-.mtc{background:#0d1020;color:#e8ecff;padding:clamp(14px,2.4vw,30px);display:grid;grid-template-columns:1.25fr 1fr;gap:16px;font-size:14px;aspect-ratio:16/10}
-.mtc-c{background:#151a33;border-radius:12px;padding:clamp(14px,1.8vw,22px);display:flex;flex-direction:column}
-.mtc small{color:#8d97c2;font-size:12px}
-.mtc .tot{font-size:clamp(22px,2.6vw,38px);font-weight:600;letter-spacing:-.03em;margin:4px 0 2px}
-.mtc .up{color:#6be3a4;font-size:13px}
-.mtc svg{width:100%;flex:1;margin-top:14px;min-height:60px}
-.mtc-l{display:grid;gap:10px;margin-top:10px}
-.mtc-i{display:flex;align-items:center;gap:10px;background:#1c2343;border-radius:9px;padding:10px 12px}
-.mtc-i i{width:28px;height:28px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:12px;color:#0d1020}
-.mtc-i b{font-weight:500}
-.mtc-i span{margin-left:auto;text-align:right;font-size:13px}
-.mtc-i em{display:block;font-style:normal;font-size:11px;color:#8d97c2}
-@media(max-width:600px){.mtc{grid-template-columns:1fr;aspect-ratio:auto}.mtc svg{height:70px;flex:none}}
-
-/* ── números ── */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.st{padding:clamp(28px,3.4vw,48px) clamp(16px,2vw,28px) clamp(28px,3.4vw,44px)}
-.st+.st{border-left:1px solid var(--line)}
-.st .v{font-size:clamp(56px,7vw,118px);font-weight:500;letter-spacing:-.06em;line-height:.9;display:flex;align-items:baseline}
-.st .v small{font-size:.42em;color:var(--acc);margin-left:4px;letter-spacing:-.02em}
-.st p{color:var(--mut);margin-top:16px;font-size:15px;max-width:220px}
-@media(max-width:820px){.stats{grid-template-columns:1fr 1fr}.st:nth-child(3){border-left:0}.st:nth-child(n+3){border-top:1px solid var(--line)}}
-
-/* ── experiência ── */
-.xp{border-top:1px solid var(--line)}
-.xr{position:relative;display:grid;grid-template-columns:180px minmax(0,1.2fr) minmax(0,1.5fr) 40px;gap:24px;align-items:baseline;padding:clamp(26px,3vw,40px) 0;border-bottom:1px solid var(--line);isolation:isolate}
-.xr::before{content:'';position:absolute;inset:0 calc(-1 * var(--m));background:var(--bg3);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);z-index:-1}
-.xr:hover::before{transform:none}
-.xr .yr{color:var(--mut);font-size:15px}
-.xr h3{font-size:clamp(26px,2.8vw,44px);font-weight:500;letter-spacing:-.04em;line-height:1;transition:transform .5s var(--ease)}
-.xr:hover h3{transform:translateX(12px)}
-.xr .role{display:block;color:var(--mut);font-size:15px;margin-top:8px;letter-spacing:0;font-weight:400}
-.xr p{color:var(--mut);font-size:16px}
-.xr .ar{font-size:22px;color:var(--dim);transition:transform .5s var(--ease),color .3s;text-align:right}
-.xr:hover .ar{transform:rotate(-45deg);color:var(--acc)}
-@media(max-width:860px){.xr{grid-template-columns:1fr;gap:10px}.xr .ar{display:none}}
-
-/* ── método (horizontal) ── */
-.method{position:relative;overflow:hidden}
-.m-pin{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(90px,10vw,130px) 0 60px}
-.m-track{display:flex;gap:clamp(16px,2vw,28px);padding:0 var(--m);width:max-content;will-change:transform}
-.mc{position:relative;width:min(470px,80vw);min-height:min(500px,62vh);flex:none;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(26px,3vw,40px);display:flex;flex-direction:column;overflow:hidden;transition:border-color .4s}
-.mc:hover{border-color:var(--line2)}
-.mc .k{display:flex;justify-content:space-between;align-items:center;color:var(--mut);font-size:14px;position:relative}
-.mc .k b{width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;color:var(--ink);font-weight:500}
-.mc h3{font-size:clamp(40px,4.4vw,68px);font-weight:500;letter-spacing:-.05em;line-height:.95;margin-top:auto;padding-top:40px;position:relative}
-.mc p{color:var(--mut);margin-top:16px;font-size:16px;position:relative}
-.mc .out{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--mut);position:relative}
-.mc .out b{display:block;color:var(--ink);font-weight:500;font-size:15px;margin-top:2px}
-.mc .big{position:absolute;right:-.02em;top:-.2em;font-size:260px;font-weight:600;letter-spacing:-.08em;line-height:1;color:rgba(255,255,255,.035);pointer-events:none}
-.mc.acc{background:var(--acc);color:var(--acc-ink);border-color:var(--acc)}
-.mc.acc p,.mc.acc .k,.mc.acc .out{color:rgba(11,11,12,.7)}
-.mc.acc .out{border-color:rgba(11,11,12,.15)}
-.mc.acc .out b,.mc.acc .k b{color:var(--acc-ink)}
-.mc.acc .k b{border-color:rgba(11,11,12,.25)}
-.mc.acc .big{color:rgba(11,11,12,.07)}
-.m-prog{width:min(var(--max),100% - 2 * var(--m));margin:40px auto 0;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
-.m-prog i{display:block;height:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
-.m-head{width:min(var(--max),100% - 2 * var(--m));margin:0 auto clamp(36px,4vw,56px)}
-.m-head .sh{margin-bottom:0}
-.method.stacked .m-pin{min-height:0}
-.method.stacked .m-track{flex-direction:column;width:auto;transform:none!important}
-.method.stacked .mc{width:100%;min-height:0}
-.method.stacked .mc h3{margin-top:28px;padding-top:0}
-.method.stacked .m-prog{display:none}
-@media(max-width:899px){.m-pin{min-height:0}.m-track{flex-direction:column;width:auto}.mc{width:100%;min-height:0}.mc h3{margin-top:28px;padding-top:0}.m-prog{display:none}}
-
-/* ── simulador ── */
-.sim{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,2vw,28px)}
-.sim-c{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3vw,44px)}
-.sim-c h3{font-size:clamp(28px,2.6vw,40px);font-weight:500;letter-spacing:-.04em;line-height:1}
-.sim-c .sub{color:var(--mut);margin-top:12px;font-size:16px}
-.fld{margin-top:30px}
-.fld label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;color:var(--mut);font-size:15px}
-.fld output{color:var(--ink);font-size:22px;font-weight:500;letter-spacing:-.02em}
-.fld input{width:100%;margin-top:12px;-webkit-appearance:none;appearance:none;height:26px;background:transparent;cursor:pointer;--p:30%}
-.fld input::-webkit-slider-runnable-track{height:4px;border-radius:4px;background:linear-gradient(90deg,var(--acc) var(--p),rgba(255,255,255,.12) var(--p))}
-.fld input::-moz-range-track{height:4px;border-radius:4px;background:rgba(255,255,255,.12)}
-.fld input::-moz-range-progress{height:4px;border-radius:4px;background:var(--acc)}
-.fld input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--ink);margin-top:-9px;box-shadow:0 0 0 6px rgba(200,255,61,.18);transition:transform .2s var(--ease)}
-.fld input::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--ink)}
-.fld input:active::-webkit-slider-thumb{transform:scale(1.25)}
-.sim-c .lk{display:inline-flex;margin-top:32px;font-size:15px;color:var(--mut);gap:8px;transition:color .25s}
-.sim-c .lk:hover{color:var(--acc)}
-.res-k{color:var(--mut);font-size:clamp(16px,1.3vw,19px)}
-.res-v{font-size:clamp(52px,6.4vw,104px);font-weight:500;letter-spacing:-.06em;line-height:.95;margin-top:6px;transition:color .3s}
-.res-v.neg{color:var(--neg)}
-.bars{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(8px,1.2vw,16px);height:240px;margin-top:40px}
+/* simulador */
+.sim{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:16px}
+.sim .card{padding:clamp(22px,2.6vw,34px)}
+.sim h3{font-size:26px}
+.sim .sb{color:var(--ink-2);margin-top:6px;font-size:15px}
+.fld{margin-top:24px}
+.fld label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;color:var(--ink-2);font-size:14.5px}
+.fld output{color:var(--ink);font-family:var(--disp);font-size:22px;letter-spacing:-.02em}
+.fld input{width:100%;margin-top:10px;-webkit-appearance:none;appearance:none;height:24px;background:transparent;cursor:pointer;--p:30%}
+.fld input::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--sky) var(--p),#dfe4ee var(--p))}
+.fld input::-moz-range-track{height:6px;border-radius:6px;background:#dfe4ee}
+.fld input::-moz-range-progress{height:6px;border-radius:6px;background:var(--sky)}
+.fld input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:7px;background:linear-gradient(#fff,#e9edf5);margin-top:-8px;box-shadow:0 0 0 1px rgba(15,25,60,.2),0 3px 6px rgba(15,25,60,.25);transition:transform .2s var(--spring)}
+.fld input::-moz-range-thumb{width:22px;height:22px;border-radius:7px;border:0;background:#fff;box-shadow:0 0 0 1px rgba(15,25,60,.2)}
+.fld input:active::-webkit-slider-thumb{transform:scale(1.2)}
+.res-k{color:var(--ink-2);font-size:15px}
+.res-v{font-family:var(--disp);font-weight:300;font-size:clamp(48px,5.4vw,80px);letter-spacing:-.04em;line-height:1;margin-top:4px;transition:color .3s}
+.res-v.neg{color:var(--red)}
+.bars{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;height:210px;margin-top:30px}
 .bar{position:relative}
-.bar .col{position:absolute;left:0;right:0;bottom:var(--zero,0%);height:var(--h,0%);border-radius:8px 8px 3px 3px;background:var(--ink);transition:height .7s var(--ease),bottom .7s var(--ease),background-color .3s}
-.bar:last-child .col{background:var(--acc)}
-.bar.neg .col{bottom:auto;top:calc(100% - var(--zero,0%));border-radius:3px 3px 8px 8px;background:var(--neg)}
-.bar .v{position:absolute;left:0;right:0;text-align:center;font-size:13px;bottom:calc(var(--zero,0%) + var(--h,0%) + 8px);transition:bottom .7s var(--ease),top .7s var(--ease)}
-.bar.neg .v{bottom:auto;top:calc(100% - var(--zero,0%) + var(--h,0%) + 8px)}
-.bar .m{position:absolute;left:0;right:0;bottom:-30px;text-align:center;font-size:13px;color:var(--mut)}
-.zero{position:absolute;left:0;right:0;bottom:var(--zero,0%);height:1px;background:var(--line2);transition:bottom .7s var(--ease)}
-.res-f{margin-top:58px;font-size:14px;color:var(--mut)}
-@media(max-width:900px){.sim{grid-template-columns:1fr}.bars{height:190px}.bar .v{font-size:11px}}
+.bar .col{position:absolute;left:0;right:0;bottom:var(--zero,0%);height:var(--h,0%);border-radius:7px 7px 2px 2px;background:linear-gradient(#5b8ff0,#2f66db);transition:height .6s var(--ease),bottom .6s var(--ease)}
+.bar.neg .col{bottom:auto;top:calc(100% - var(--zero,0%));border-radius:2px 2px 7px 7px;background:linear-gradient(#ef7a6e,#c93a2e)}
+.bar .v{position:absolute;left:0;right:0;text-align:center;font-size:12.5px;font-weight:600;bottom:calc(var(--zero,0%) + var(--h,0%) + 6px);transition:bottom .6s var(--ease)}
+.bar.neg .v{bottom:auto;top:calc(100% - var(--zero,0%) + var(--h,0%) + 6px)}
+.bar .m{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font-size:12.5px;color:var(--ink-3)}
+.zero{position:absolute;left:0;right:0;bottom:var(--zero,0%);height:1px;background:rgba(15,25,60,.2);transition:bottom .6s var(--ease)}
+.res-f{margin-top:46px;font-size:13.5px;color:var(--ink-3)}
+.res-f a{color:var(--sky-d);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:860px){.sim{grid-template-columns:1fr}.bars{height:170px}.bar .v{font-size:11px}}
 
-/* ── sobre ── */
-.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,110px);align-items:start}
-.pf{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;background:var(--bg3)}
-.pf img{width:100%;height:118%;object-fit:cover;object-position:50% 30%;filter:grayscale(.25) contrast(1.04)}
-.pf .tagl{position:absolute;left:16px;bottom:16px;display:flex;align-items:center;gap:10px;font-size:13px;background:rgba(11,11,12,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:8px 14px;border-radius:99px}
-.ab-t .st1{font-size:clamp(30px,3.4vw,54px);font-weight:500;letter-spacing:-.045em;line-height:1.05}
-.ab-t .st1 .wd{opacity:.18}
-.ab-t .st1 em.s{color:var(--acc)}
-.ab-t p.b{color:var(--mut);margin-top:28px;max-width:560px;font-size:17px}
-.ab-t p.b+p.b{margin-top:14px}
-.ab-t p.b b{color:var(--ink);font-weight:500}
-.stk{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:40px}
-.sk{border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:15px;transition:background-color .3s,border-color .3s,transform .3s var(--ease)}
-.sk small{display:block;color:var(--mut);font-size:12px;margin-bottom:2px}
-.sk:hover{background:var(--bg3);border-color:var(--line2);transform:translateY(-3px)}
-@media(max-width:900px){.about{grid-template-columns:1fr}.pf{max-width:440px}.stk{grid-template-columns:repeat(2,1fr)}}
+/* sobre: retrato pixelado */
+.ab{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:16px}
+.ab-ph{padding:12px}
+.pxp{position:relative;border-radius:16px 16px 16px 4px;overflow:hidden;aspect-ratio:4/5;background:var(--sky-d);cursor:pointer}
+.pxp img,.pxp canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.pxp img{opacity:0;transition:opacity .6s var(--ease)}
+.pxp:hover img,.pxp.show img{opacity:1}
+.pxp .hint{position:absolute;left:10px;bottom:10px;font-size:12.5px;font-weight:600;padding:6px 10px;border-radius:9px;background:rgba(255,255,255,.9);color:var(--ink);transition:opacity .3s}
+.pxp:hover .hint,.pxp.show .hint{opacity:0}
+.ab-ph figcaption{padding:14px 8px 4px;font-size:14px}
+.ab-ph figcaption b{display:block;font-weight:700}
+.ab-ph figcaption span{color:var(--ink-3)}
+.ab-t{padding:clamp(24px,3vw,40px)}
+.ab-t .big{font-family:var(--disp);font-weight:300;font-size:clamp(28px,3vw,40px);letter-spacing:-.035em;line-height:1.12}
+.ab-t p.b{color:var(--ink-2);margin-top:18px;font-size:16.5px;max-width:62ch}
+.ab-t p.b b{color:var(--ink);font-weight:600}
+.stk{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:26px}
+.sk{border-radius:12px;padding:10px 12px;background:#f3f5f9;box-shadow:inset 0 0 0 1px rgba(15,25,60,.08);font-size:14px;font-weight:600;transition:transform .25s var(--spring),background-color .2s}
+.sk small{display:block;font-weight:500;font-size:12px;color:var(--ink-3)}
+.sk:hover{transform:translateY(-3px);background:#fff}
+@media(max-width:860px){.ab{grid-template-columns:1fr}.ab-ph{max-width:420px}.stk{grid-template-columns:repeat(2,1fr)}}
 
-/* ── faq ── */
-.faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,6vw,110px)}
-.fq{border-top:1px solid var(--line)}
-.fq:last-child{border-bottom:1px solid var(--line)}
-.fq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:26px 0;text-align:left;font-size:clamp(19px,1.7vw,25px);font-weight:500;letter-spacing:-.02em;transition:color .25s}
-.fq-q:hover{color:var(--acc)}
-.pm{position:relative;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);flex:none;color:var(--ink);transition:transform .45s var(--ease),background-color .3s,border-color .3s}
-.pm::before,.pm::after{content:'';position:absolute;left:50%;top:50%;width:13px;height:1.5px;margin:-.75px 0 0 -6.5px;background:currentColor}
-.pm::after{transform:rotate(90deg);transition:transform .45s var(--ease)}
-.fq.open .pm{background:var(--acc);border-color:var(--acc);color:var(--acc-ink);transform:rotate(180deg)}
+/* dúvidas */
+.faq{max-width:820px;margin:0 auto;display:grid;gap:10px}
+.fq{padding:0 22px}
+.fq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:20px 0;text-align:left;font-family:var(--disp);font-size:clamp(18px,1.6vw,21px);letter-spacing:-.015em}
+.pm{width:30px;height:30px;border-radius:9px;background:var(--chip);box-shadow:inset 0 0 0 1px rgba(15,25,60,.1);position:relative;flex:none;transition:transform .4s var(--spring),background-color .2s}
+.pm::before,.pm::after{content:'';position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;background:var(--ink);border-radius:2px}
+.pm::after{transform:rotate(90deg);transition:transform .4s var(--ease)}
+.fq.open .pm{transform:rotate(180deg);background:var(--ink)}
+.fq.open .pm::before,.fq.open .pm::after{background:#fff}
 .fq.open .pm::after{transform:rotate(0)}
-.fq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s var(--ease)}
+.fq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
 .fq.open .fq-a{grid-template-rows:1fr}
 .fq-a>div{overflow:hidden}
-.fq-a p{color:var(--mut);padding:0 60px 28px 0;max-width:720px;font-size:17px}
-@media(max-width:860px){.faq{grid-template-columns:1fr}.fq-a p{padding-right:0}}
+.fq-a p{color:var(--ink-2);padding:0 40px 22px 0;font-size:16px;max-width:66ch}
 
-/* ── contato ── */
-.cta{position:relative;padding:clamp(110px,14vw,200px) 0 clamp(60px,6vw,90px);overflow:hidden}
-.cta .glow{width:70vw;height:50vw;left:15vw;top:10%;background:radial-gradient(closest-side,rgba(200,255,61,.16),transparent)}
-.cta h2{position:relative;font-size:clamp(56px,11vw,190px);font-weight:500;letter-spacing:-.06em;line-height:.86}
-.cta h2 .ln{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
-.cta h2 .ln>span{display:inline-block}
-.cta h2 em.s{color:var(--acc)}
-.cta-row{position:relative;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;margin-top:clamp(40px,5vw,70px)}
-.cta-row p{color:var(--mut);max-width:440px;font-size:18px}
-.mag{width:clamp(150px,14vw,210px);aspect-ratio:1;border-radius:50%;background:var(--acc);color:var(--acc-ink);display:grid;place-items:center;text-align:center;font-weight:600;font-size:17px;line-height:1.2;transition:background-color .3s;will-change:transform}
-.mag:hover{background:var(--ink)}
-.mag span{display:block;pointer-events:none}
-.ch{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:clamp(56px,6vw,90px)}
-.ch a,.ch button{display:flex;flex-direction:column;gap:6px;text-align:left;padding:22px;border:1px solid var(--line);border-radius:18px;transition:background-color .3s,border-color .3s,transform .35s var(--ease)}
-.ch a:hover,.ch button:hover{background:var(--bg3);border-color:var(--line2);transform:translateY(-4px)}
-.ch small{color:var(--mut);font-size:13px;display:flex;justify-content:space-between;width:100%}
-.ch small i{font-style:normal;transition:transform .35s var(--ease)}
-.ch a:hover small i,.ch button:hover small i{transform:rotate(45deg);color:var(--acc)}
-.ch b{font-weight:500;font-size:16px;word-break:break-all}
-@media(max-width:900px){.cta-row{grid-template-columns:1fr}.ch{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.ch{grid-template-columns:1fr}}
+/* fim + colinas */
+.end{position:relative;padding-top:clamp(100px,12vw,160px);text-align:center;overflow:hidden}
+.end h2{font-family:var(--disp);font-weight:300;font-size:clamp(60px,9vw,96px);letter-spacing:-.04em;line-height:.95}
+.end p{margin-top:16px;color:var(--on-sky-2);font-size:clamp(17px,1.5vw,20px)}
+.end .cta{display:flex;gap:10px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+.end .links{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px;font-size:14.5px;font-weight:600}
+.end .links a,.end .links button{padding:9px 14px;border-radius:10px;background:rgba(255,255,255,.12);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);transition:background-color .2s}
+.end .links a:hover,.end .links button:hover{background:rgba(255,255,255,.24)}
+.hills{height:clamp(200px,24vw,320px);margin-top:clamp(40px,5vw,70px)}
+.hills canvas{width:100%;height:100%}
+.foot{background:#f6f7f9;color:var(--ink);padding:30px 0 34px}
+.foot-in{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.foot nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14.5px;color:var(--ink-2);margin-top:16px}
+.foot nav a:hover{color:var(--ink)}
+.foot small{display:block;color:var(--ink-3);font-size:13.5px;margin-top:16px}
 
-/* ── rodapé ── */
-.foot{position:relative;padding-bottom:28px;overflow:hidden}
-.big-name{font-size:18.4vw;font-weight:600;letter-spacing:-.075em;line-height:.8;white-space:nowrap;text-align:center;overflow:hidden;padding:.04em 0 .16em}
-.big-name .c{display:inline-block}
-.f-row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--mut);padding-top:24px;margin-top:32px;border-top:1px solid var(--line)}
-.f-row a:hover{color:var(--ink)}
-
+/* entradas */
+.js [data-up]{opacity:0;transform:translateY(26px)}
+.js [data-up].in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0) * 90ms)}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
-  .loader{display:none!important}
+  .js [data-up]{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
-
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="lc">
-    <p class="ln"><b>Miguel Reis</b>Desenvolvedor full stack · Rio Grande do Sul</p>
-    <span class="cnt num" id="lcnt">0</span>
-  </div>
-  <div class="bar"><i id="lbar"></i></div>
-</div>
-<div class="grain" aria-hidden="true"></div>
-<div class="cur" aria-hidden="true"></div>
-<div class="cur-r" aria-hidden="true"><span>Ver</span></div>
+<canvas id="sky" class="px" aria-hidden="true"></canvas>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-ar" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+  <symbol id="i-ck" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 1.8 2.2 3.9 4.6 4.6l1.2-1.2 2 1-.5 1.6c-3.7.3-7.6-3.6-7.3-7.3l1.6-.5 1 2z" stroke-width="1.4"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+</svg>
 
 <header class="nav" id="nav">
   <div class="wrap nav-in">
-    <a class="logo" href="#top" aria-label="Miguel Reis, início"><span class="mk">MR</span>Miguel Reis</a>
+    <a class="logo" href="#top" aria-label="reis.dev, início"><canvas class="px" data-mark width="8" height="8"></canvas>reis<span>.dev</span></a>
     <nav class="nav-l" aria-label="Seções">
       <a href="#trabalhos">Trabalhos</a>
+      <a href="#processo">Processo</a>
       <a href="#experiencia">Experiência</a>
-      <a href="#metodo">Método</a>
       <a href="#sobre">Sobre</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
-    <div class="nav-r">
-      <span class="avail"><span class="dot"></span>Disponível</span>
-      <a class="btn btn-p btn-sm" href="#contato" data-h><span class="t"><span>Contato</span><span>Contato</span></span><span class="ic">↗</span></a>
-    </div>
+    <a class="btn btn-w btn-sm" href="#plano">Montar meu projeto</a>
   </div>
 </header>
 
 <main id="top">
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero" aria-label="Apresentação">
-    <div class="glow" aria-hidden="true"></div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-g">
+      <div>
+        <h1 aria-label="Sites e sistemas, com prazo fechado antes do código.">
+          <span class="ln" aria-hidden="true"><span>Sites e sistemas,</span></span>
+          <span class="ln" aria-hidden="true"><span>com prazo fechado</span></span>
+          <span class="ln" aria-hidden="true"><span>antes do código.</span></span>
+        </h1>
+        <p class="sub" data-up style="--i:1">Sou Miguel Castanho Reis, desenvolvedor full stack. Monte ao lado o plano do seu projeto, veja o cronograma semana a semana e me mande pronto no WhatsApp.</p>
+        <div class="cta" data-up style="--i:2">
+          <a class="btn btn-w" href="#plano">Montar meu projeto <svg class="i"><use href="#i-ar"/></svg></a>
+          <a class="btn btn-g" href="#trabalhos">Ver trabalhos no ar</a>
+        </div>
+        <p class="avail" data-up style="--i:3"><i></i>Agenda aberta · resposta em até 24h</p>
+      </div>
+
+      <div class="plan-wrap" id="plano" data-up style="--i:2">
+        <form class="card plan" id="planner" onsubmit="return false" aria-labelledby="plan-t">
+          <div class="plan-h"><h2 id="plan-t">Monte seu projeto</h2><small><i></i>rascunho</small></div>
+          <fieldset class="q">
+            <legend>O que você precisa?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="tipo" value="site" checked />Site institucional <small>1–2 sem</small></label>
+              <label class="chip"><input type="radio" name="tipo" value="sistema" />Sistema com login e painel <small>4–8 sem</small></label>
+              <label class="chip"><input type="radio" name="tipo" value="manut" />Melhorar um sistema que já existe</label>
+            </div>
+          </fieldset>
+          <fieldset class="q">
+            <legend>Para quando?</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="prazo" value="sem pressa" checked />Sem pressa</label>
+              <label class="chip"><input type="radio" name="prazo" value="este mês" />Este mês</label>
+              <label class="chip"><input type="radio" name="prazo" value="tenho uma data marcada" />Tenho uma data</label>
+            </div>
+          </fieldset>
+          <div class="sched" aria-live="polite">
+            <div class="sched-h"><b id="sTitle">Cronograma</b><span id="sDur">2 semanas</span></div>
+            <div class="rows" id="sRows"></div>
+            <div class="wks" aria-hidden="true"><span></span><div id="sWks"></div></div>
+          </div>
+          <ul class="get" id="sGet"></ul>
+          <div class="send">
+            <a class="btn btn-wa" id="sSend" href="https://wa.me/55999429756" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Enviar este plano no WhatsApp</a>
+          </div>
+        </form>
+        <a class="card r live" href="https://www.financasiq.com" target="_blank" rel="noopener">
+          <img src="assets/work/financasiq-d.webp" width="1440" height="900" alt="" />
+          <span><b>FinançasIQ</b><small><i></i>no ar agora</small></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRABALHOS -->
+  <section class="sec" id="trabalhos">
     <div class="wrap">
-      <div class="h-top" data-fade>
-        <span><span class="dot"></span>Disponível para novos projetos</span>
-        <span class="hide-m">Rio Grande do Sul, Brasil · <b class="num" id="clock" style="font-weight:500;color:var(--ink)">--:--</b></span>
-      </div>
-      <h1 aria-label="Desenvolvedor full stack que entrega.">
-        <span class="ln" aria-hidden="true"><span>Desenvolvedor</span></span>
-        <span class="ln r" aria-hidden="true"><span>full stack <em class="s">que entrega.</em></span></span>
-      </h1>
-      <div class="h-bot">
-        <p data-fade>Sou <b>Miguel Castanho Reis</b>. Construo produtos web do banco de dados ao deploy: meu próprio SaaS, sites para clientes e sistemas de gestão pública que não podem cair.</p>
-        <div class="h-cta" data-fade>
-          <a class="btn btn-p" href="#trabalhos" data-h><span class="t"><span>Ver projetos</span><span>Ver projetos</span></span><span class="ic">↓</span></a>
-          <a class="btn btn-g" href="#contato" data-h><span class="t"><span>Falar comigo</span><span>Falar comigo</span></span></a>
-        </div>
-      </div>
-
-      <div class="stage" id="stage">
-        <div class="stage-in" id="stageIn">
-          <div class="br" data-cursor="view" data-href="https://www.financasiq.com">
-            <div class="br-bar"><i></i><i></i><i></i><span class="url">financasiq.com</span></div>
-            <div class="br-sc"><img src="assets/work/financasiq-d.webp" width="1440" height="900" alt="Tela inicial do FinançasIQ com o gráfico de previsão de saldo" /></div>
+      <div class="sh"><h2 data-up>Trabalhos que estão no ar.</h2><p data-up style="--i:1">Um produto meu, um site de cliente e um projeto de estudo. Abra e use de verdade.</p></div>
+      <div class="bento">
+        <article class="card pj pj-a" data-up>
+          <h3>FinançasIQ</h3>
+          <p class="meta">Produto próprio · assinatura <span class="on"><i></i>no ar desde 2026</span></p>
+          <p class="ds">App de controle financeiro que mostra quanto vai sobrar, ou faltar, em cada um dos próximos 6 meses. Importa extrato, cifra os dados no navegador e funciona offline.</p>
+          <div class="tg"><span>React</span><span>Vite</span><span>Firebase</span><span>Chart.js</span><span>PWA</span><span>Pagamentos</span></div>
+          <div class="go"><a class="btn btn-d btn-sm" href="https://www.financasiq.com" target="_blank" rel="noopener">Abrir financasiq.com <svg class="i"><use href="#i-out"/></svg></a></div>
+          <div class="shot"><div class="bar"><i></i><i></i><i></i><span>financasiq.com</span></div><div class="sc"><img src="assets/work/financasiq-d.webp" width="1440" height="900" alt="Tela inicial do FinançasIQ com o gráfico de previsão" loading="lazy" /></div></div>
+        </article>
+        <article class="card r pj pj-p" data-up style="--i:1">
+          <h3>No seu bolso.</h3>
+          <p class="ds">O FinançasIQ instala como app, sem loja, e abre mesmo sem internet.</p>
+          <div class="phone"><div class="sc"><img src="assets/work/financasiq-m.webp" width="780" height="1688" alt="FinançasIQ aberto no celular" loading="lazy" /></div></div>
+        </article>
+        <article class="card pj pj-b" data-up>
+          <h3>Dr. André Reis</h3>
+          <p class="meta">Site de cliente · cirurgião-dentista <span class="on"><i></i>no ar desde 2026</span></p>
+          <p class="ds">Tratamentos explicados em linguagem de paciente e agendamento direto pelo WhatsApp. Leve no celular e fácil de achar no Google.</p>
+          <div class="tg"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>SEO</span><span>Vercel</span></div>
+          <div class="go"><a class="btn btn-d btn-sm" href="https://drandrereis.vercel.app" target="_blank" rel="noopener">Abrir o site <svg class="i"><use href="#i-out"/></svg></a></div>
+          <div class="shot"><div class="bar"><i></i><i></i><i></i><span>drandrereis.vercel.app</span></div><div class="sc"><img src="assets/work/drandre-d.webp" width="1440" height="900" alt="Página inicial do site do Dr. André Reis" loading="lazy" /></div></div>
+        </article>
+        <article class="card r pj pj-c" data-up style="--i:1">
+          <h3>Money Tracker</h3>
+          <p class="meta">Projeto de estudo · 2024</p>
+          <p class="ds">Carteira de criptoativos com saldo em reais pela cotação de mercado e cache para não estourar o limite da API. A semente do FinançasIQ.</p>
+          <div class="tg"><span>React</span><span>Vite</span><span>REST</span><span>Cache</span></div>
+          <div class="go"><a class="btn btn-l btn-sm" href="https://github.com/tzydit/Money-Tracker-Crypto" target="_blank" rel="noopener">Ver o código <svg class="i"><use href="#i-out"/></svg></a></div>
+          <div class="mtc" role="img" aria-label="Interface do Money Tracker com patrimônio, gráfico e moedas, valores ilustrativos">
+            <div class="mtc-c"><small>Patrimônio em cripto</small><div class="tot num">R$ 12.480,90</div><span class="up num">+4,2% em 7 dias</span>
+              <svg viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true"><path id="spark" d="M0 92 L30 86 L60 94 L90 70 L120 76 L150 56 L180 62 L210 40 L240 46 L270 26 L300 18" fill="none" stroke="#6be3a4" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg></div>
+            <div class="mtc-c"><small>Carteira</small><div class="mtc-l">
+              <div class="mtc-i"><i style="background:#f7b14a">B</i>Bitcoin<span class="num">R$ 7.912</span></div>
+              <div class="mtc-i"><i style="background:#9fb0ff">E</i>Ethereum<span class="num">R$ 3.106</span></div>
+              <div class="mtc-i"><i style="background:#6be3a4">S</i>Solana<span class="num">R$ 1.462</span></div>
+            </div></div>
           </div>
-          <div class="ph" data-depth="1.8">
-            <div class="ph-sc"><img src="assets/work/drandre-m.webp" width="780" height="1688" alt="Site do Dr. André Reis no celular" /></div>
-          </div>
-          <div class="chip c1" data-depth="2.6"><span class="ico">↗</span><span><b>2 produtos no ar</b><small>FinançasIQ e Dr. André Reis</small></span></div>
-          <div class="chip c2" data-depth="1.2"><span class="dot"></span><span><b class="num">R$ 19,90/mês</b><small>FinançasIQ, assinatura</small></span></div>
-        </div>
+          <p class="mtc-cap">Interface redesenhada a partir do projeto · valores ilustrativos</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ═══ MARQUEE ═══ -->
-  <div class="mq" aria-hidden="true">
-    <div class="mq-row" data-dir="-1"><span>TypeScript</span><span>React</span><span>Next.js</span><span>Node.js</span><span>PostgreSQL</span><span>Python</span><span>Firebase</span><span>Docker</span></div>
-    <div class="mq-row o" data-dir="1"><span>Produto</span><span>Interface</span><span>API</span><span>Banco de dados</span><span>Deploy</span><span>Manutenção</span></div>
-  </div>
-
-  <!-- ═══ TRABALHOS ═══ -->
-  <section class="sec" id="trabalhos" style="padding-top:clamp(60px,6vw,100px)">
+  <!-- PROCESSO -->
+  <section class="sec" id="processo" style="padding-top:clamp(40px,5vw,70px)">
     <div class="wrap">
-      <div class="sh">
-        <h2 data-words>Trabalhos selecionados</h2>
-        <span class="count num">(03)</span>
+      <div class="sh"><h2 data-up>Seu projeto, semana a semana.</h2><p data-up style="--i:1">Exemplo de um sistema de seis semanas. Toda sexta tem algo novo para você clicar.</p></div>
+      <div class="card cal" data-up>
+        <div class="cal-scroll">
+          <div class="cal-g" id="calG">
+            <span></span><span class="hd">SEM 1</span><span class="hd">SEM 2</span><span class="hd">SEM 3</span><span class="hd">SEM 4</span><span class="hd">SEM 5</span><span class="hd">SEM 6</span>
+            <span class="lb" style="grid-row:2">Escopo<small>conversa e proposta</small></span><span class="bar-cell" style="--c:2/3;grid-row:2"><canvas class="px" data-bar="0"></canvas></span>
+            <span class="lb" style="grid-row:3">Desenho<small>telas e banco</small></span><span class="bar-cell" style="--c:2/4;grid-row:3"><canvas class="px" data-bar="1"></canvas></span>
+            <span class="lb" style="grid-row:4">Construção<small>ciclos semanais</small></span><span class="bar-cell" style="--c:3/7;grid-row:4"><canvas class="px" data-bar="2"></canvas></span>
+            <span class="lb" style="grid-row:5">Versão nova<small>em homologação</small></span><span class="fri" style="grid-column:3/7;grid-row:5"><i></i><i></i><i></i><i></i></span>
+            <span class="lb" style="grid-row:6">No ar<small>deploy e entrega</small></span><span class="bar-cell" style="--c:7/8;grid-row:6"><canvas class="px" data-bar="3"></canvas></span>
+          </div>
+        </div>
+        <div class="cal-n">
+          <div><h3>Antes do código</h3><p>Conversa de 45 minutos, desenho das telas e proposta com prazo, valor e entregas por escrito.</p><p class="rs"><span class="ck"><svg class="i"><use href="#i-ck"/></svg></span>Você sabe o custo antes de começar.</p></div>
+          <div><h3>Durante</h3><p>Toda sexta uma versão navegável em homologação. Seus comentários entram no ciclo seguinte.</p><p class="rs"><span class="ck"><svg class="i"><use href="#i-ck"/></svg></span>Você vê o sistema crescer, sem surpresa.</p></div>
+          <div><h3>Depois</h3><p>Deploy na sua hospedagem, backup configurado, repositório transferido e 30 dias de correção de defeitos sem custo.</p><p class="rs"><span class="ck"><svg class="i"><use href="#i-ck"/></svg></span>O código é 100% seu.</p></div>
+        </div>
       </div>
-
-      <!-- FinançasIQ -->
-      <article class="case">
-        <div class="case-info">
-          <div class="case-n"><span>01</span><span>Produto próprio · 2026</span></div>
-          <h3>Finanças<em class="s">IQ</em></h3>
-          <p class="desc">App de controle financeiro que usa os seus lançamentos para mostrar <b>quanto vai sobrar, ou faltar, em cada um dos próximos 6 meses</b>. Importa extrato OFX, CSV e PDF, cifra os dados no navegador e funciona offline instalado como app.</p>
-          <dl class="facts">
-            <div><dt>Papel</dt><dd>Criador · design, front, back e pagamentos</dd></div>
-            <div><dt>Modelo</dt><dd class="num">Assinatura a partir de R$ 14,99/mês</dd></div>
-            <div><dt>Status</dt><dd><span class="live"><span class="dot"></span>No ar</span></dd></div>
-          </dl>
-          <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Firebase</span><span class="tag">Chart.js</span><span class="tag">PWA</span><span class="tag">Webhooks</span></div>
-          <a class="btn btn-p" href="https://www.financasiq.com" target="_blank" rel="noopener" data-h><span class="t"><span>Visitar financasiq.com</span><span>Visitar financasiq.com</span></span><span class="ic">↗</span></a>
-        </div>
-        <div class="case-media">
-          <div class="mwrap" style="--tint:rgba(80,200,120,.22)">
-            <div class="br" data-cursor="view" data-href="https://www.financasiq.com"><div class="br-bar"><i></i><i></i><i></i><span class="url">financasiq.com</span></div><div class="br-sc"><img data-par src="assets/work/financasiq-d2.webp" width="1440" height="900" alt="FinançasIQ: etapas lançado, calculado e previsto" loading="lazy" /></div></div>
-          </div>
-          <div class="mrow">
-            <div class="mwrap" style="--tint:rgba(200,255,61,.16)">
-              <div class="ph"><div class="ph-sc"><img data-par src="assets/work/financasiq-m.webp" width="780" height="1688" alt="FinançasIQ no celular" loading="lazy" /></div></div>
-            </div>
-            <div class="mwrap" style="--tint:rgba(80,200,120,.18)">
-              <div class="br" data-cursor="view" data-href="https://www.financasiq.com"><div class="br-bar"><i></i><i></i><i></i><span class="url">financasiq.com</span></div><div class="br-sc"><img data-par src="assets/work/financasiq-d3.webp" width="1440" height="900" alt="FinançasIQ: carteira de investimentos com patrimônio por classe" loading="lazy" /></div></div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Dr. André Reis -->
-      <article class="case">
-        <div class="case-info">
-          <div class="case-n"><span>02</span><span>Cliente · 2026</span></div>
-          <h3>Dr. André <em class="s">Reis</em></h3>
-          <p class="desc">Site de consultório para um cirurgião-dentista especializado em implantes. <b>Tratamentos explicados em linguagem de paciente</b>, etapas do atendimento e agendamento direto pelo WhatsApp. Leve, rápido no celular e fácil de achar no Google.</p>
-          <dl class="facts">
-            <div><dt>Papel</dt><dd>Design e desenvolvimento</dd></div>
-            <div><dt>Objetivo</dt><dd>Gerar agendamentos pelo WhatsApp</dd></div>
-            <div><dt>Status</dt><dd><span class="live"><span class="dot"></span>No ar</span></dd></div>
-          </dl>
-          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span><span class="tag">SEO</span><span class="tag">Vercel</span></div>
-          <a class="btn btn-p" href="https://drandrereis.vercel.app" target="_blank" rel="noopener" data-h><span class="t"><span>Visitar o site</span><span>Visitar o site</span></span><span class="ic">↗</span></a>
-        </div>
-        <div class="case-media">
-          <div class="mwrap" style="--tint:rgba(214,170,110,.2)">
-            <div class="br" data-cursor="view" data-href="https://drandrereis.vercel.app"><div class="br-bar"><i></i><i></i><i></i><span class="url">drandrereis.vercel.app</span></div><div class="br-sc"><img data-par src="assets/work/drandre-d.webp" width="1440" height="900" alt="Página inicial do site do Dr. André Reis" loading="lazy" /></div></div>
-          </div>
-          <div class="mrow">
-            <div class="mwrap" style="--tint:rgba(120,80,220,.2)">
-              <div class="ph"><div class="ph-sc"><img data-par src="assets/work/drandre-m.webp" width="780" height="1688" alt="Site do Dr. André Reis no celular" loading="lazy" /></div></div>
-            </div>
-            <div class="mwrap" style="--tint:rgba(214,170,110,.16)">
-              <div class="br" data-cursor="view" data-href="https://drandrereis.vercel.app"><div class="br-bar"><i></i><i></i><i></i><span class="url">drandrereis.vercel.app</span></div><div class="br-sc"><img data-par src="assets/work/drandre-d3.webp" width="1440" height="900" alt="Seção sobre o Dr. André Reis" loading="lazy" /></div></div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Money Tracker -->
-      <article class="case">
-        <div class="case-info">
-          <div class="case-n"><span>03</span><span>Projeto pessoal · 2024</span></div>
-          <h3>Money <em class="s">Tracker</em></h3>
-          <p class="desc">Carteira de criptoativos que consolida o saldo em reais a partir da cotação de mercado, <b>com cache para não estourar o limite da API pública</b> de preços. Foi onde comecei a pensar em finanças como produto, a semente do FinançasIQ.</p>
-          <dl class="facts">
-            <div><dt>Papel</dt><dd>Desenvolvimento front-end</dd></div>
-            <div><dt>Dados</dt><dd>API REST de cotações</dd></div>
-            <div><dt>Código</dt><dd>Aberto no GitHub</dd></div>
-          </dl>
-          <div class="tags"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">REST</span><span class="tag">Cache</span></div>
-          <a class="btn btn-g" href="https://github.com/tzydit/Money-Tracker-Crypto" target="_blank" rel="noopener" data-h><span class="t"><span>Ver o código</span><span>Ver o código</span></span><span class="ic">↗</span></a>
-        </div>
-        <div class="case-media">
-          <div class="mwrap" style="--tint:rgba(110,130,255,.22)">
-            <div class="br">
-              <div class="br-bar"><i></i><i></i><i></i><span class="url">money-tracker</span></div>
-              <div class="mtc" role="img" aria-label="Interface do Money Tracker Crypto com patrimônio, gráfico e lista de moedas (valores ilustrativos)">
-                <div class="mtc-c">
-                  <small>Patrimônio em cripto</small>
-                  <div class="tot num">R$ 12.480,90</div>
-                  <span class="up num">+4,2% em 7 dias</span>
-                  <svg viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true"><path class="spark" d="M0 92 L30 86 L60 94 L90 70 L120 76 L150 56 L180 62 L210 40 L240 46 L270 26 L300 18" fill="none" stroke="#6be3a4" stroke-width="2.5" vector-effect="non-scaling-stroke"/></svg>
-                </div>
-                <div class="mtc-c">
-                  <small>Carteira</small>
-                  <div class="mtc-l">
-                    <div class="mtc-i"><i style="background:#f7b14a">B</i><b>Bitcoin</b><span class="num">R$ 7.912<em>0,0213 BTC</em></span></div>
-                    <div class="mtc-i"><i style="background:#9fb0ff">E</i><b>Ethereum</b><span class="num">R$ 3.106<em>0,182 ETH</em></span></div>
-                    <div class="mtc-i"><i style="background:#6be3a4">S</i><b>Solana</b><span class="num">R$ 1.462<em>1,34 SOL</em></span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <span class="mcap">Interface redesenhada a partir do projeto · valores ilustrativos</span>
-          </div>
-        </div>
-      </article>
     </div>
   </section>
 
-  <!-- ═══ NÚMEROS ═══ -->
-  <section class="wrap" aria-label="Números">
-    <div class="stats">
-      <div class="st"><div class="v num"><span data-count="5">5</span><small>+</small></div><p>anos escrevendo software, desde 2021</p></div>
-      <div class="st"><div class="v num"><span data-count="3">3</span></div><p>ambientes: consultoria, gestão pública e estúdio próprio</p></div>
-      <div class="st"><div class="v num"><span data-count="2">2</span></div><p>produtos no ar hoje, com usuários reais</p></div>
-      <div class="st"><div class="v num"><span data-count="24">24</span><small>h</small></div><p>prazo máximo de resposta no WhatsApp ou e-mail</p></div>
-    </div>
-  </section>
-
-  <!-- ═══ EXPERIÊNCIA ═══ -->
-  <section class="sec" id="experiencia">
+  <!-- EXPERIÊNCIA -->
+  <section class="sec" id="experiencia" style="padding-top:clamp(40px,5vw,70px)">
     <div class="wrap">
-      <div class="sh">
-        <h2 data-words>Onde aprendi o ofício</h2>
-        <p class="side">De equipe grande a sistema crítico, até o estúdio próprio. Cada lugar deixou um hábito que levo para os projetos.</p>
-      </div>
-      <div class="xp">
-        <div class="xr" data-row><span class="yr num">2026 — hoje</span><h3>reis.dev<span class="role">Fundador · desenvolvedor full stack</span></h3><p>Conduzo o projeto inteiro, da modelagem de dados à publicação, e entrego com documentação, variáveis de ambiente descritas e deploy automatizado.</p><span class="ar">→</span></div>
-        <div class="xr" data-row><span class="yr num">2025 — hoje</span><h3>Delta Gestão Pública<span class="role">Suporte e análise</span></h3><p>Sistemas onde a regra vem da lei e a falha chega no cidadão. Diagnóstico de incidentes em produção, SQL e conversa direta com quem usa o sistema todo dia.</p><span class="ar">→</span></div>
-        <div class="xr" data-row><span class="yr num">2023 — 2024</span><h3>Compass UOL<span class="role">Desenvolvedor full stack</span></h3><p>Code review como rotina, testes automatizados, Git disciplinado e entregas em ciclos curtos com metodologia ágil.</p><span class="ar">→</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ MÉTODO ═══ -->
-  <section class="method" id="metodo">
-    <div class="m-pin" id="mpin">
-      <div class="m-head">
-        <div class="sh">
-          <h2 data-words>Como eu trabalho</h2>
-          <p class="side">Quatro etapas, prazo e valor fechados antes de começar, e uma versão navegável toda semana.</p>
+      <div class="sh"><h2 data-up>Onde aprendi o ofício.</h2><p data-up style="--i:1">De equipe grande a sistema crítico, até o estúdio próprio.</p></div>
+      <div class="card xp" data-up>
+        <div class="xp-l" role="tablist" aria-label="Experiência">
+          <button role="tab" aria-selected="true" aria-controls="xpPanel" data-x="0"><span class="mono" style="background:#2f66db">r</span><span><b>reis.dev</b><small>Fundador · 2026 até hoje</small></span><i class="s"></i></button>
+          <button role="tab" aria-selected="false" aria-controls="xpPanel" data-x="1"><span class="mono" style="background:#8a5c06">D</span><span><b>Delta Gestão Pública</b><small>Suporte e análise · 2025 até hoje</small></span><i class="s"></i></button>
+          <button role="tab" aria-selected="false" aria-controls="xpPanel" data-x="2"><span class="mono" style="background:#4b5363">C</span><span><b>Compass UOL</b><small>Full stack · 2023 a 2024</small></span><i class="s off"></i></button>
+        </div>
+        <div class="xp-d" role="tabpanel" id="xpPanel">
+          <div class="top"><canvas class="px" id="xpSky" width="120" height="16"></canvas></div>
+          <span class="mono" id="xpMono" style="background:#2f66db">r</span>
+          <div class="bd" id="xpBd"></div>
         </div>
       </div>
-      <div class="m-track" id="mtrack">
-        <article class="mc"><span class="big num">1</span><div class="k"><span>Etapa um</span><b>01</b></div><h3>Entender</h3><p>De trinta a sessenta minutos sobre o problema: quem usa, com que frequência e o que acontece quando o sistema cai.</p><div class="out">Você recebe<b>Escopo fechado, prazo e valor por escrito</b></div></article>
-        <article class="mc"><span class="big num">2</span><div class="k"><span>Etapa dois</span><b>02</b></div><h3>Desenhar</h3><p>Modelagem do banco, contrato da API e o porquê de cada escolha de tecnologia, enquanto mudar ainda é barato.</p><div class="out">Você recebe<b>Diagrama de dados e stack definida</b></div></article>
-        <article class="mc"><span class="big num">3</span><div class="k"><span>Etapa três</span><b>03</b></div><h3>Construir</h3><p>Ciclos de uma semana. Toda sexta uma versão navegável em homologação: você clica no sistema de verdade.</p><div class="out">Você recebe<b>Homologação atualizada toda semana</b></div></article>
-        <article class="mc acc"><span class="big num">4</span><div class="k"><span>Etapa quatro</span><b>04</b></div><h3>Publicar</h3><p>Deploy na sua infraestrutura, backup configurado e repositório transferido para a sua conta. Depois, 30 dias de garantia.</p><div class="out">Você recebe<b>Sistema no ar e código 100% seu</b></div></article>
-      </div>
-      <div class="m-prog" aria-hidden="true"><i id="mprog"></i></div>
     </div>
   </section>
 
-  <!-- ═══ SIMULADOR ═══ -->
-  <section class="sec" id="previsao">
+  <!-- SIMULADOR -->
+  <section class="sec" id="previsao" style="padding-top:clamp(40px,5vw,70px)">
     <div class="wrap">
-      <div class="sh">
-        <h2 data-words>Teste o FinançasIQ aqui</h2>
-        <p class="side">O cálculo central do app, em versão de bolso. Mexa nos valores e veja o saldo dos próximos seis meses.</p>
-      </div>
+      <div class="sh"><h2 data-up>Teste o FinançasIQ aqui.</h2><p data-up style="--i:1">O cálculo central do app, em versão de bolso. Arraste e veja o saldo dos próximos seis meses.</p></div>
       <div class="sim">
-        <form class="sim-c" onsubmit="return false" data-fade>
+        <form class="card" onsubmit="return false" data-up>
           <h3>Seus números</h3>
-          <p class="sub">Arraste os controles.</p>
+          <p class="sb">Valores de exemplo, mude à vontade.</p>
           <div class="fld"><label for="s0">Saldo hoje <output class="num" id="o0" for="s0">R$ 1.200</output></label><input type="range" id="s0" min="0" max="20000" step="100" value="1200" /></div>
           <div class="fld"><label for="s1">Entra por mês <output class="num" id="o1" for="s1">R$ 5.200</output></label><input type="range" id="s1" min="0" max="15000" step="50" value="5200" /></div>
           <div class="fld"><label for="s2">Sai por mês <output class="num" id="o2" for="s2">R$ 5.650</output></label><input type="range" id="s2" min="0" max="15000" step="50" value="5650" /></div>
-          <a class="lk" href="https://www.financasiq.com" target="_blank" rel="noopener" data-h>Usar a versão completa ↗</a>
         </form>
-        <div class="sim-c" aria-live="polite" data-fade>
+        <div class="card r" aria-live="polite" data-up style="--i:1">
           <p class="res-k" id="rk">Seu saldo fica negativo em janeiro</p>
           <p class="res-v num neg" id="rv">−R$ 150</p>
           <div class="bars" id="bars" aria-hidden="true"></div>
-          <p class="res-f">Simulação simples: saldo + (entradas − saídas) × meses. O app de verdade usa a média dos seus últimos 6 meses e ignora gastos fora do padrão.</p>
+          <p class="res-f">Simulação simples: saldo + (entradas − saídas) × meses. O app usa a média dos seus últimos 6 meses e ignora gastos fora do padrão. <a href="https://www.financasiq.com" target="_blank" rel="noopener">Usar a versão completa</a></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ SOBRE ═══ -->
-  <section class="sec" id="sobre" style="padding-top:clamp(40px,5vw,80px)">
-    <div class="wrap about">
-      <figure class="pf" data-fade>
-        <img src="assets/miguel.jpg" width="578" height="722" alt="Retrato de Miguel Castanho Reis" loading="lazy" id="pfimg" />
-        <figcaption class="tagl"><span class="dot"></span>Miguel Castanho Reis</figcaption>
+  <!-- SOBRE -->
+  <section class="sec" id="sobre" style="padding-top:clamp(40px,5vw,70px)">
+    <div class="wrap ab">
+      <figure class="card ab-ph" data-up>
+        <div class="pxp" id="pxp" tabindex="0" role="button" aria-label="Retrato de Miguel em pixel; toque para ver a foto">
+          <canvas class="px" id="pxCv" aria-hidden="true"></canvas>
+          <img src="assets/miguel.jpg" width="578" height="722" alt="Retrato de Miguel Castanho Reis" id="pxImg" />
+          <span class="hint">Passe o mouse para ver a foto</span>
+        </div>
+        <figcaption><b>Miguel Castanho Reis</b><span>Desenvolvedor full stack · Rio Grande do Sul</span></figcaption>
       </figure>
-      <div class="ab-t">
-        <span class="lbl">Sobre mim</span>
-        <p class="st1" id="st1">Gosto de entender o negócio antes da tela e de entregar código que <em class="s">outra pessoa consiga manter.</em> O repositório é seu desde o primeiro commit.</p>
-        <p class="b" data-fade>Programo desde 2021. Passei por consultoria em equipe grande, hoje cuido de sistemas de gestão pública e, em paralelo, construo meus próprios produtos sob a <b>reis.dev</b>.</p>
-        <p class="b" data-fade>Trabalho remoto para todo o Brasil, sozinho ou junto com a sua equipe, mandando alterações por pull request como qualquer pessoa do time.</p>
-        <div class="stk" data-stagger>
+      <div class="card r ab-t" data-up style="--i:1">
+        <p class="big">Gosto de entender o negócio antes da tela e de entregar código que outra pessoa consiga manter.</p>
+        <p class="b">Programo desde 2021. Passei por consultoria em equipe grande, hoje cuido de sistemas de gestão pública e, em paralelo, construo meus próprios produtos sob a <b>reis.dev</b>.</p>
+        <p class="b">Trabalho remoto para todo o Brasil, sozinho ou junto com a sua equipe, mandando alterações por pull request como qualquer pessoa do time. <b>O repositório é seu desde o primeiro commit.</b></p>
+        <div class="stk">
           <div class="sk"><small>Linguagem</small>TypeScript</div>
-          <div class="sk"><small>Interface</small>React · Next.js</div>
-          <div class="sk"><small>Servidor</small>Node · Express</div>
+          <div class="sk"><small>Interface</small>React · Next</div>
+          <div class="sk"><small>Servidor</small>Node</div>
           <div class="sk"><small>Dados</small>PostgreSQL</div>
           <div class="sk"><small>Automação</small>Python</div>
           <div class="sk"><small>Backend</small>Firebase</div>
-          <div class="sk"><small>Infra</small>Docker · AWS</div>
+          <div class="sk"><small>Infra</small>Docker</div>
           <div class="sk"><small>Deploy</small>Vercel</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ DÚVIDAS ═══ -->
-  <section class="sec" id="duvidas" style="padding-top:clamp(40px,5vw,80px)">
-    <div class="wrap faq">
-      <div>
-        <span class="lbl">Dúvidas</span>
-        <div class="sh" style="margin-bottom:24px"><h2 data-words>Antes de contratar</h2></div>
-        <p style="color:var(--mut);max-width:320px">Não achou a sua? Mande no WhatsApp, respondo em até 24 horas.</p>
-      </div>
-      <div data-stagger>
-        <div class="fq"><button class="fq-q" aria-expanded="false">Como é feito o orçamento?<span class="pm"></span></button><div class="fq-a"><div><p>Escopo fechado tem valor fixo, com prazo e entregas no contrato. Escopo aberto ou manutenção é por hora, com relatório do que foi feito. A proposta sai depois da primeira conversa.</p></div></div></div>
-        <div class="fq"><button class="fq-q" aria-expanded="false">Quanto tempo leva um projeto?<span class="pm"></span></button><div class="fq-a"><div><p>Uma página institucional leva de uma a duas semanas. Um sistema com login, banco de dados e painel, de quatro a oito semanas. O cronograma vem na proposta, ciclo por ciclo.</p></div></div></div>
-        <div class="fq"><button class="fq-q" aria-expanded="false">De quem é o código no final?<span class="pm"></span></button><div class="fq-a"><div><p>Seu. O repositório vai para a conta da sua empresa com todo o histórico. Nada de plataforma fechada: se um dia trocar de desenvolvedor, a próxima pessoa continua de onde parou.</p></div></div></div>
-        <div class="fq"><button class="fq-q" aria-expanded="false">Quem paga a infraestrutura?<span class="pm"></span></button><div class="fq-a"><div><p>Domínio, servidor, banco e e-mail ficam em seu nome. A configuração é feita junto com você, o custo é transparente e o acesso não depende de mim.</p></div></div></div>
-        <div class="fq"><button class="fq-q" aria-expanded="false">Tem suporte depois da entrega?<span class="pm"></span></button><div class="fq-a"><div><p>Tem. São 30 dias de correção de defeitos sem custo. Depois disso dá para contratar manutenção mensal ou atendimento por demanda, com condições combinadas antes.</p></div></div></div>
-        <div class="fq"><button class="fq-q" aria-expanded="false">Trabalha junto com equipe interna?<span class="pm"></span></button><div class="fq-a"><div><p>Sim. Entro no repositório e nas reuniões do time, sigo o padrão de código que já existe e mando alterações por pull request.</p></div></div></div>
+  <!-- DÚVIDAS -->
+  <section class="sec" id="duvidas" style="padding-top:clamp(40px,5vw,70px)">
+    <div class="wrap">
+      <div class="sh"><h2 data-up>Antes de contratar.</h2></div>
+      <div class="faq">
+        <div class="card fq open" data-up><button class="fq-q" aria-expanded="true">Como é feito o orçamento?<span class="pm"></span></button><div class="fq-a"><div><p>Escopo fechado tem valor fixo, com prazo e entregas no contrato. Escopo aberto ou manutenção é por hora, com relatório do que foi feito. A proposta sai depois da primeira conversa.</p></div></div></div>
+        <div class="card r fq" data-up><button class="fq-q" aria-expanded="false">Quanto tempo leva um projeto?<span class="pm"></span></button><div class="fq-a"><div><p>Uma página institucional leva de uma a duas semanas. Um sistema com login, banco de dados e painel, de quatro a oito semanas. O cronograma vem na proposta, ciclo por ciclo.</p></div></div></div>
+        <div class="card fq" data-up><button class="fq-q" aria-expanded="false">De quem é o código no final?<span class="pm"></span></button><div class="fq-a"><div><p>Seu. O repositório vai para a conta da sua empresa com todo o histórico. Se um dia trocar de desenvolvedor, a próxima pessoa continua de onde parou.</p></div></div></div>
+        <div class="card r fq" data-up><button class="fq-q" aria-expanded="false">Quem paga a infraestrutura?<span class="pm"></span></button><div class="fq-a"><div><p>Domínio, servidor, banco e e-mail ficam em seu nome. A configuração é feita junto com você, o custo é transparente e o acesso não depende de mim.</p></div></div></div>
+        <div class="card fq" data-up><button class="fq-q" aria-expanded="false">Tem suporte depois da entrega?<span class="pm"></span></button><div class="fq-a"><div><p>Tem. São 30 dias de correção de defeitos sem custo. Depois dá para contratar manutenção mensal ou atendimento por demanda.</p></div></div></div>
+        <div class="card r fq" data-up><button class="fq-q" aria-expanded="false">Trabalha junto com equipe interna?<span class="pm"></span></button><div class="fq-a"><div><p>Sim. Entro no repositório e nas reuniões do time, sigo o padrão de código que já existe e mando alterações por pull request.</p></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ CONTATO ═══ -->
-  <section class="cta" id="contato">
-    <div class="glow" aria-hidden="true"></div>
+  <!-- CONTATO -->
+  <section class="end" id="contato">
     <div class="wrap">
-      <span class="lbl">Contato</span>
-      <h2 aria-label="Vamos construir algo juntos?">
-        <span class="ln" aria-hidden="true"><span>Vamos construir</span></span>
-        <span class="ln" aria-hidden="true"><span><em class="s">algo</em> juntos?</span></span>
-      </h2>
-      <div class="cta-row">
-        <p data-fade>Conte o que precisa ser construído e para quando. Respondo em até 24 horas com as próximas etapas.</p>
-        <a class="mag" id="mag" href="https://wa.me/55999429756?text=Ol%C3%A1%2C%20Miguel.%20Vi%20o%20site%20reis.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" data-h><span>Falar no<br />WhatsApp ↗</span></a>
+      <h2 data-up>Vamos começar.</h2>
+      <p data-up style="--i:1">Conte o que precisa e para quando. Respondo em até 24 horas.</p>
+      <div class="cta" data-up style="--i:2">
+        <a class="btn btn-wa" href="https://wa.me/55999429756?text=Ol%C3%A1%2C%20Miguel.%20Vi%20o%20site%20reis.dev%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+        <a class="btn btn-g" href="mailto:miguelcastanhoreisr@gmail.com?subject=Projeto%20via%20reis.dev">Mandar e-mail</a>
       </div>
-      <div class="ch" data-stagger>
-        <a href="mailto:miguelcastanhoreisr@gmail.com?subject=Projeto%20via%20reis.dev" data-h><small>E-mail <i>↗</i></small><b>miguelcastanhoreisr@gmail.com</b></a>
-        <button type="button" id="copy" data-h><small><span id="copyl">Copiar e-mail</span> <i>⧉</i></small><b>Copiar endereço</b></button>
-        <a href="https://www.linkedin.com/in/miguel-castanho-reis-02393a269/" target="_blank" rel="noopener" data-h><small>LinkedIn <i>↗</i></small><b>/miguel-castanho-reis</b></a>
-        <a href="https://github.com/tzydit" target="_blank" rel="noopener" data-h><small>GitHub <i>↗</i></small><b>/tzydit</b></a>
+      <div class="links" data-up style="--i:3">
+        <button type="button" id="copy">Copiar e-mail</button>
+        <a href="https://www.linkedin.com/in/miguel-castanho-reis-02393a269/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/tzydit" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
+    <div class="hills"><canvas class="px" id="hills" aria-hidden="true"></canvas></div>
   </section>
 </main>
 
 <footer class="foot">
-  <div class="big-name" id="bigname" aria-hidden="true">Miguel Reis</div>
-  <div class="wrap f-row">
-    <span>© 2026 reis.dev · Miguel Castanho Reis</span>
-    <span>Feito à mão, sem rastreadores</span>
-    <a href="#top" data-h>Voltar ao topo ↑</a>
+  <div class="wrap foot-in">
+    <div>
+      <a class="logo" href="#top"><canvas class="px" data-mark width="8" height="8"></canvas>reis<span>.dev</span></a>
+      <nav aria-label="Rodapé"><a href="#plano">Montar projeto</a><a href="#trabalhos">Trabalhos</a><a href="#processo">Processo</a><a href="#experiencia">Experiência</a><a href="#previsao">Simulador</a><a href="#sobre">Sobre</a><a href="#duvidas">Dúvidas</a></nav>
+      <small>© 2026 reis.dev · Miguel Castanho Reis · Rio Grande do Sul, Brasil</small>
+    </div>
+    <a class="btn btn-l btn-sm" href="#top">Voltar ao topo <svg class="i"><use href="#i-up"/></svg></a>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (()=>{
 const $=(s,c)=>(c||document).querySelector(s),$$=(s,c)=>[...(c||document).querySelectorAll(s)];
 const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const FINE=matchMedia('(pointer:fine)').matches;
-const HAS=!!(window.gsap&&window.ScrollTrigger);
-const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-const brl=v=>(v<0?'−':'')+'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR');
 
-/* relógio */
-const ck=$('#clock');const tick=()=>{ck.textContent=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'})};tick();setInterval(tick,15000);
+/* Bayer 4x4: o pontilhado que dá a textura de pixel */
+const B=[0,8,2,10,12,4,14,6,3,11,1,9,15,7,13,5].map(v=>(v+.5)/16);
+const hex=h=>[parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];
+function dither(ctx,w,h,pal,f,t){
+  const img=ctx.createImageData(w,h),d=img.data,n=pal.length-1;
+  for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+    let v=f(x,y,t);if(v<0)v=0;if(v>.9999)v=.9999;
+    const p=v*n,i=Math.floor(p),c=pal[p-i>B[(y&3)*4+(x&3)]?i+1:i],o=(y*w+x)*4;
+    d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=255}
+  ctx.putImageData(img,0,0)}
+const SKY=['#1f4fc4','#2a5fd6','#3570e2','#4580ea','#5b92f0','#78a6f3','#9bbdf6','#bcd3f8'].map(hex);
 
-/* palavras dos títulos de seção */
-$$('[data-words]').forEach(h=>{const t=h.textContent.trim();h.setAttribute('aria-label',t);
-  h.innerHTML=t.split(' ').map(w=>`<span class="w" aria-hidden="true"><span>${w}</span></span>`).join(' ')});
-/* frase do sobre, palavra por palavra (preserva o itálico) */
-const st1=$('#st1');
-st1.innerHTML=st1.innerHTML.replace(/(<em[^>]*>)(.*?)(<\/em>)|([^\s<]+)/g,(m,a,b,c,w)=>a?a+b.split(' ').map(x=>`<span class="wd">${x}</span>`).join(' ')+c:`<span class="wd">${w}</span>`);
-/* nome do rodapé, letra por letra */
-const bn=$('#bigname');bn.innerHTML=[...bn.textContent].map(c=>c===' '?' ':`<span class="c">${c}</span>`).join('');
+/* céu */
+const sky=$('#sky'),sc=sky.getContext('2d');let sw=0,sh=0;
+function skySize(){const k=innerWidth<700?3:4;sw=Math.ceil(innerWidth/k);sh=Math.ceil(innerHeight/k);sky.width=sw;sky.height=sh}
+skySize();addEventListener('resize',skySize);
+const skyF=(x,y,t)=>{const g=y/sh,band=Math.sin(x*.035+t*.15+Math.sin(y*.02)*2)*.5+.5,hill=.06*Math.sin(x*.012-t*.05)+.04*Math.sin(x*.031+t*.08);
+  return g*.62+(g>.7+hill?.12:0)+band*.06*(1-g)+.08};
+let last=0;
+function skyLoop(now){if(now-last>66){dither(sc,sw,sh,SKY,skyF,now/1000);last=now}if(!RM)requestAnimationFrame(skyLoop)}
+requestAnimationFrame(skyLoop);
 
-/* ── nav ── */
+/* monograma do logo: um "r" em pixel */
+$$('canvas[data-mark]').forEach(c=>{const x=c.getContext('2d');dither(x,8,8,SKY.slice(0,5),(a,b)=>b/8*.8+.1,0);
+  x.fillStyle='#fff';x.fillRect(2,2,1,5);x.fillRect(3,3,1,1);x.fillRect(4,2,2,1);x.fillRect(6,3,1,1)});
+
+/* colinas do fim */
+const hc=$('#hills'),hx=hc.getContext('2d');
+const HILL=['#3570e2','#4580ea','#5b92f0','#7aa3ea','#a4b9de','#d6c3b3','#f2c9a4'].map(hex),HILL2=['#2a4e9e','#335dad','#3d6abc'].map(hex);
+function drawHills(){const r=hc.getBoundingClientRect(),k=4,w=Math.ceil(r.width/k),h=Math.ceil(r.height/k);if(!w||!h)return;hc.width=w;hc.height=h;
+  dither(hx,w,h,HILL,(x,y)=>y/h*.95+.02,0);
+  const img=hx.getImageData(0,0,w,h),d=img.data;
+  for(let x=0;x<w;x++){const top=h*(.72-.14*Math.exp(-(((x-w/2)/(w*.22))**2))+.03*Math.sin(x*.09));
+    for(let y=Math.floor(top);y<h;y++){const g=(y-top)/(h-top)+B[(y&3)*4+(x&3)]*.5,c=HILL2[g>.55?2:g>.25?1:0],o=(y*w+x)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2]}}
+  hx.putImageData(img,0,0)}
+drawHills();addEventListener('resize',drawHills);
+
+/* barra pixelada de cronograma, com o mesmo pontilhado */
+const BARS=[['#e3a32b','#f2c66a','#fbe3ad'],['#7a4fe0','#a07cf0','#cbb6f7'],['#2f66db','#5b92f0','#9bbdf6'],['#178a4a','#3cbf75','#9fe2bb']].map(p=>p.map(hex));
+function drawBar(cv,kind,fill){const r=cv.getBoundingClientRect(),w=Math.max(8,Math.round(r.width/3)),h=Math.max(3,Math.round(r.height/3));cv.width=w;cv.height=h;
+  const x=cv.getContext('2d');dither(x,w,h,BARS[kind],(a,b)=>.15+.7*(1-b/h)*(.6+.4*Math.sin(a*.25)),0);
+  if(fill<1)x.clearRect(Math.round(w*fill),0,w,h)}
+
+/* nav */
 const nav=$('#nav');let lastY=0;
-function navUpd(y){nav.classList.toggle('solid',y>40);if(Math.abs(y-lastY)>4){nav.classList.toggle('hide',y>lastY&&y>400);lastY=y}
+function navUpd(y){nav.classList.toggle('solid',y>30);if(Math.abs(y-lastY)>4){nav.classList.toggle('hide',y>lastY&&y>500);lastY=y}
   $$('.nav-l a').forEach(a=>{const s=document.querySelector(a.getAttribute('href'));if(!s)return;const r=s.getBoundingClientRect();a.classList.toggle('on',r.top<innerHeight*.45&&r.bottom>innerHeight*.45)})}
 
-/* ── simulador ── */
+/* rolagem suave */
+let lenis=null;
+if(window.Lenis&&!RM){lenis=new Lenis({lerp:.1});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);lenis.on('scroll',e=>navUpd(e.scroll))}
+else addEventListener('scroll',()=>navUpd(scrollY),{passive:true});
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'),t=id==='#top'?0:document.querySelector(id);if(t===null)return;e.preventDefault();lenis?lenis.scrollTo(t,{duration:1.4,offset:-90}):(t===0?scrollTo(0,0):t.scrollIntoView())}));
+
+/* entradas */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+$$('[data-up]').forEach(el=>io.observe(el));
+if(!RM)$$('.hero h1 .ln>span').forEach((s,i)=>s.animate([{transform:'translateY(110%)'},{transform:'none'}],{duration:1100,delay:150+i*110,easing:'cubic-bezier(.22,1,.36,1)',fill:'backwards'}));
+const sp=$('#spark');if(sp&&!RM){const L=sp.getTotalLength();sp.style.strokeDasharray=L;sp.style.strokeDashoffset=L;
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){sp.style.transition='stroke-dashoffset 1.8s cubic-bezier(.22,1,.36,1)';sp.style.strokeDashoffset=0;o.disconnect()}}),{threshold:.4}).observe(sp)}
+
+/* ── planejador do hero ── */
+const CK='<span class="ck"><svg class="i"><use href="#i-ck"/></svg></span>';
+const PLANS={
+  site:{t:'Site institucional',dur:'1 a 2 semanas',wk:2,rows:[['Escopo',0,0,1],['Desenho',1,0,1],['Construção',2,1,2],['No ar',3,1,2]],
+    get:['Proposta com prazo e valor fixo antes de começar','Site rápido no celular e pronto para o Google','Domínio e hospedagem no seu nome']},
+  sistema:{t:'Sistema com login e painel',dur:'4 a 8 semanas',wk:8,rows:[['Escopo',0,0,1],['Desenho',1,0,2],['Construção',2,1,7],['No ar',3,7,8]],
+    get:['Proposta com prazo e valor fixo antes de começar','Versão navegável toda sexta para você testar','Código, banco e acessos transferidos para você']},
+  manut:{t:'Melhoria em sistema existente',dur:'por hora',wk:4,rows:[['Diagnóstico',0,0,1],['Ajustes',2,1,4],['Publicação',3,1,4]],
+    get:['Diagnóstico do código antes de mexer','Relatório do que foi feito, hora a hora','Alterações por pull request, no seu repositório']}};
+const fm=$('#planner'),sRows=$('#sRows'),sWks=$('#sWks'),sGet=$('#sGet'),sDur=$('#sDur'),sTitle=$('#sTitle'),sSend=$('#sSend');
+let growT=0;
+function plan(){const tipo=fm.tipo.value,prazo=fm.prazo.value,p=PLANS[tipo];
+  sTitle.textContent=p.t;sDur.textContent=p.dur;
+  sRows.innerHTML=p.rows.map(r=>`<div class="rw"><span>${r[0]}</span><div style="padding-left:${r[2]/p.wk*100}%;padding-right:${(p.wk-r[3])/p.wk*100}%"><canvas class="px" data-k="${r[1]}"></canvas></div></div>`).join('');
+  sWks.innerHTML=[...Array(p.wk)].map((_,i)=>`<span>${i+1}</span>`).join('');
+  sGet.innerHTML=p.get.map(g=>`<li>${CK}${g}</li>`).join('');
+  const msg=`Olá, Miguel. Montei um plano no reis.dev:\n• Projeto: ${p.t}\n• Prazo desejado: ${prazo}\nPodemos conversar?`;
+  sSend.href='https://wa.me/55999429756?text='+encodeURIComponent(msg);
+  const cvs=$$('canvas',sRows),t0=performance.now();cancelAnimationFrame(growT);
+  const grow=now=>{const k=RM?1:Math.min(1,(now-t0)/700);cvs.forEach((c,i)=>drawBar(c,+c.dataset.k,Math.min(1,Math.max(0,k*1.6-i*.2))));if(k<1)growT=requestAnimationFrame(grow);else cvs.forEach(c=>drawBar(c,+c.dataset.k,1))};
+  growT=requestAnimationFrame(grow)}
+fm.addEventListener('change',plan);plan();addEventListener('resize',()=>$$('canvas',sRows).forEach(c=>drawBar(c,+c.dataset.k,1)));
+
+/* calendário do processo */
+const calBars=$$('#calG canvas[data-bar]');
+function drawCal(fill){calBars.forEach((c,i)=>drawBar(c,+c.dataset.bar,Math.min(1,Math.max(0,fill*2-i*.3))))}
+drawCal(RM?1:0);
+new IntersectionObserver((es,o)=>es.forEach(e=>{if(!e.isIntersecting)return;o.disconnect();const t0=performance.now();
+  const step=now=>{const k=RM?1:Math.min(1,(now-t0)/1400);drawCal(k);if(k<1)requestAnimationFrame(step)};requestAnimationFrame(step)}),{threshold:.35}).observe($('#calG'));
+addEventListener('resize',()=>drawCal(1));
+
+/* experiência */
+const xs=$('#xpSky');dither(xs.getContext('2d'),120,16,SKY.slice(3),(x,y)=>y/16*.9+.05+.08*Math.sin(x*.2),0);
+const XP=[
+ {m:'r',c:'#2f66db',h:'reis.dev',rl:'Fundador e desenvolvedor full stack · 2026 até hoje',p:'Meu estúdio. Conduzo o projeto inteiro, da modelagem de dados à publicação, e entrego com documentação, variáveis de ambiente descritas e deploy automatizado. Daqui saíram o FinançasIQ e o site do Dr. André.',u:['Next.js','React','Node','Firebase','Vercel'],now:'Construindo produtos próprios e de clientes'},
+ {m:'D',c:'#8a5c06',h:'Delta Gestão Pública',rl:'Suporte e análise · 2025 até hoje',p:'Sistemas onde a regra vem da lei e a falha chega no cidadão. Diagnóstico de incidentes em produção, consultas SQL e conversa direta com quem usa o sistema todo dia.',u:['SQL','Sistemas legados','Suporte N2'],now:'Mantendo sistemas públicos funcionando'},
+ {m:'C',c:'#4b5363',h:'Compass UOL',rl:'Desenvolvedor full stack · 2023 a 2024',p:'Formação em equipe grande: code review como rotina, testes automatizados, Git disciplinado e entregas em ciclos curtos com metodologia ágil.',u:['JavaScript','React','Node','Testes'],now:'Concluído'}];
+const xbd=$('#xpBd'),xm=$('#xpMono');
+function showXp(i,anim){const x=XP[i];const put=()=>{xbd.innerHTML=`<h3>${x.h}</h3><p class="rl">${x.rl}</p><p>${x.p}</p><dl class="kv"><dt>Usa</dt><dd>${x.u.map(t=>`<span>${t}</span>`).join('')}</dd><dt>Agora</dt><dd style="font-size:14px">${x.now}</dd></dl>`;xm.textContent=x.m;xm.style.background=x.c;xbd.classList.remove('sw')};
+  $$('.xp-l button').forEach((b,j)=>{b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1});
+  if(anim&&!RM){xbd.classList.add('sw');setTimeout(put,180);xm.animate([{transform:'scale(1)'},{transform:'scale(1.12) rotate(-6deg)'},{transform:'scale(1)'}],{duration:450,easing:'cubic-bezier(.34,1.56,.64,1)'})}else put()}
+const xb=$$('.xp-l button');
+xb.forEach((b,i)=>{b.addEventListener('click',()=>showXp(i,true));b.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();const n=(i+(e.key==='ArrowDown'?1:2))%3;xb[n].focus();showXp(n,true)}})});
+showXp(0);
+
+/* retrato em pixel: a foto redesenhada com o pontilhado do céu */
+const pxImg=$('#pxImg'),pxCv=$('#pxCv'),pxp=$('#pxp');
+const PORT=['#0f2a73','#1d3f9e','#2a5fd6','#4580ea','#78a6f3','#bcd3f8','#e3ecfc'].map(hex);
+function drawPortrait(){const w=72,h=90;pxCv.width=w;pxCv.height=h;const x=pxCv.getContext('2d');
+  const o=document.createElement('canvas');o.width=w;o.height=h;const ox=o.getContext('2d');
+  const iw=pxImg.naturalWidth,ih=pxImg.naturalHeight,s2=Math.max(w/iw,h/ih),dw=iw*s2,dh=ih*s2;
+  ox.drawImage(pxImg,(w-dw)/2,(h-dh)*.25,dw,dh);const src=ox.getImageData(0,0,w,h).data;
+  dither(x,w,h,PORT,(a,b)=>{const i=(b*w+a)*4,l=(.299*src[i]+.587*src[i+1]+.114*src[i+2])/255;return Math.pow(l,1.15)*1.05},0)}
+if(pxImg.complete&&pxImg.naturalWidth)drawPortrait();else pxImg.addEventListener('load',drawPortrait);
+pxp.addEventListener('click',()=>pxp.classList.toggle('show'));
+pxp.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pxp.classList.toggle('show')}});
+
+/* simulador */
 const sl=[$('#s0'),$('#s1'),$('#s2')],ou=[$('#o0'),$('#o1'),$('#o2')],bars=$('#bars'),rk=$('#rk'),rv=$('#rv');
+const brl=v=>(v<0?'−':'')+'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR');
 const MES=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
 const now=new Date(),months=[...Array(6)].map((_,i)=>MES[(now.getMonth()+1+i)%12]);
 bars.innerHTML='<i class="zero"></i>'+months.map(m=>`<div class="bar"><span class="col"></span><span class="v num"></span><span class="m">${m.slice(0,3)}</span></div>`).join('');
 const bs=$$('.bar',bars);
-function sim(){
-  const [b0,inn,out]=sl.map(x=>+x.value);
+function sim(){const [b0,inn,out]=sl.map(x=>+x.value);
   sl.forEach((x,i)=>{ou[i].textContent=brl(+x.value);x.style.setProperty('--p',(x.value-x.min)/(x.max-x.min)*100+'%')});
-  const vals=months.map((_,i)=>b0+(inn-out)*(i+1));
-  const mx=Math.max(0,...vals),mn=Math.min(0,...vals),span=(mx-mn)||1,zero=(-mn/span)*100;
+  const vals=months.map((_,i)=>b0+(inn-out)*(i+1)),mx=Math.max(0,...vals),mn=Math.min(0,...vals),span=(mx-mn)||1,zero=(-mn/span)*100;
   bars.style.setProperty('--zero',zero+'%');
   bs.forEach((b,i)=>{const v=vals[i],a=Math.abs(v);b.classList.toggle('neg',v<0);b.style.setProperty('--zero',zero+'%');b.style.setProperty('--h',(a/span*100*.84)+'%');
     b.querySelector('.v').textContent=(v<0?'−':'')+(a>=1000?(a/1000).toLocaleString('pt-BR',{maximumFractionDigits:1})+' mil':Math.round(a))});
   const fn=vals.findIndex(v=>v<0);
   if(fn>=0){rk.textContent='Seu saldo fica negativo em '+months[fn];rv.textContent=brl(vals[fn]);rv.classList.add('neg')}
-  else{rk.textContent='Em '+months[5]+' você terá';rv.textContent=brl(vals[5]);rv.classList.remove('neg')}
-}
+  else{rk.textContent='Em '+months[5]+' você terá';rv.textContent=brl(vals[5]);rv.classList.remove('neg')}}
 sl.forEach(x=>x.addEventListener('input',sim));sim();
 
-/* ── faq ── */
+/* dúvidas */
 $$('.fq-q').forEach(q=>q.addEventListener('click',()=>{const f=q.parentElement,o=f.classList.contains('open');
   $$('.fq.open').forEach(x=>{x.classList.remove('open');$('.fq-q',x).setAttribute('aria-expanded','false')});
   if(!o){f.classList.add('open');q.setAttribute('aria-expanded','true')}}));
-$('.fq').classList.add('open');$('.fq .fq-q').setAttribute('aria-expanded','true');
 
-/* ── copiar e-mail ── */
-const cp=$('#copy'),cl=$('#copyl');
-cp.addEventListener('click',async()=>{let ok=false;try{await navigator.clipboard.writeText('miguelcastanhoreisr@gmail.com');ok=true}catch(_){}
-  cl.textContent=ok?'Copiado ✓':'Selecione e copie';setTimeout(()=>cl.textContent='Copiar e-mail',1800)});
-
-/* mockups clicáveis */
-$$('[data-href]').forEach(el=>el.addEventListener('click',()=>window.open(el.dataset.href,'_blank','noopener')));
-
-/* ── sem GSAP ou com movimento reduzido: página estática e completa ── */
-const loader=$('#loader');
-if(!HAS||RM){loader.remove();$$('#st1 .wd').forEach(w=>w.style.opacity=1);
-  addEventListener('scroll',()=>navUpd(scrollY),{passive:true});
-  if(!HAS)$('.method').classList.add('stacked');
-  return}
-
-gsap.registerPlugin(ScrollTrigger);
-
-/* ── Lenis ── */
-let lenis=null;
-if(window.Lenis){lenis=new Lenis({lerp:.09,smoothWheel:true});
-  lenis.on('scroll',e=>{ScrollTrigger.update();navUpd(e.scroll)});
-  gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);lenis.stop()}
-else addEventListener('scroll',()=>navUpd(scrollY),{passive:true});
-$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'),t=id==='#top'?0:document.querySelector(id);if(t===null)return;e.preventDefault();
-  lenis?lenis.scrollTo(t,{duration:1.6}):(t===0?scrollTo(0,0):t.scrollIntoView())}));
-
-/* estados iniciais (só com GSAP carregado, então nada some sem script) */
-gsap.set('.hero h1 .ln>span',{yPercent:115});
-gsap.set('[data-fade]',{autoAlpha:0,y:30});
-gsap.set('.stage-in',{autoAlpha:0,y:120});
-gsap.set('.nav',{yPercent:-100});
-$$('[data-count]').forEach(e=>e.textContent='0');
-
-/* ── loader ── */
-const cnt=$('#lcnt'),lbar=$('#lbar'),o={v:0};
-const tl=gsap.timeline();
-tl.to(o,{v:100,duration:1.5,ease:'power2.inOut',onUpdate:()=>{cnt.textContent=Math.round(o.v);lbar.style.transform=`scaleX(${o.v/100})`}})
-  .to('#loader .lc,#loader .bar',{yPercent:-30,autoAlpha:0,duration:.5,ease:'power2.in'},'+=.1')
-  .to(loader,{yPercent:-100,duration:1,ease:'expo.inOut'},'-=.15')
-  .add(()=>{loader.remove();lenis&&lenis.start()})
-  .to('.hero h1 .ln>span',{yPercent:0,duration:1.3,ease:'expo.out',stagger:.12},'-=.55')
-  .to('.nav',{yPercent:0,duration:1,ease:'expo.out',clearProps:'transform'},'<.2')
-  .to('.hero [data-fade]',{autoAlpha:1,y:0,duration:1,ease:'expo.out',stagger:.08},'<.15')
-  .to('.stage-in',{autoAlpha:1,y:0,duration:1.6,ease:'expo.out'},'<.1');
-setTimeout(()=>{if(document.body.contains(loader))tl.progress(1)},6000);
-
-/* palco: inclina e cresce com a rolagem */
-gsap.fromTo('.stage-in .br',{rotateX:16,scale:.9,transformPerspective:1800,transformOrigin:'50% 0%'},{rotateX:0,scale:1,ease:'none',scrollTrigger:{trigger:'#stage',start:'top 95%',end:'top 15%',scrub:true}});
-gsap.to('.stage-in .ph',{y:-90,ease:'none',scrollTrigger:{trigger:'#stage',start:'top bottom',end:'bottom top',scrub:true}});
-gsap.to('.chip.c1',{y:-140,ease:'none',scrollTrigger:{trigger:'#stage',start:'top bottom',end:'bottom top',scrub:true}});
-gsap.to('.chip.c2',{y:60,ease:'none',scrollTrigger:{trigger:'#stage',start:'top bottom',end:'bottom top',scrub:true}});
-gsap.to('.hero .glow',{yPercent:40,scale:1.3,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
-/* paralaxe do mouse no palco */
-if(FINE){const si=$('#stageIn');const rx=gsap.quickTo(si,'rotationY',{duration:1.2,ease:'power3'}),ry=gsap.quickTo(si,'rotationX',{duration:1.2,ease:'power3'});
-  const deps=$$('[data-depth]',si).map(el=>({x:gsap.quickTo(el,'x',{duration:1.4,ease:'power3'}),d:+el.dataset.depth}));
-  addEventListener('mousemove',e=>{const nx=e.clientX/innerWidth-.5,ny=e.clientY/innerHeight-.5;rx(nx*5);ry(-ny*3);deps.forEach(d=>d.x(nx*-24*d.d))})}
-
-/* ── marquee com velocidade da rolagem ── */
-const rows=$$('.mq-row').map(r=>{r.innerHTML+=r.innerHTML;return{el:r,x:0,dir:+r.dataset.dir,w:0}});
-const measure=()=>rows.forEach(r=>{r.w=r.el.scrollWidth/2;if(r.dir>0)r.x=-r.w});measure();addEventListener('resize',measure);
-let vel=0;ScrollTrigger.create({onUpdate:s=>{vel=clamp(s.getVelocity()/300,-12,12)}});
-gsap.ticker.add((t,dt)=>{vel*=.92;rows.forEach(r=>{r.x+=r.dir*(0.6+Math.abs(vel))*(dt/16);if(r.x<=-r.w)r.x+=r.w;if(r.x>0)r.x-=r.w;r.el.style.transform=`translate3d(${r.x}px,0,0) skewX(${-vel*.6}deg)`})});
-
-/* ── títulos de seção ── */
-$$('[data-words]').forEach(h=>gsap.from($$('.w>span',h),{yPercent:110,rotate:4,duration:1.2,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:h,start:'top 86%'}}));
-/* entradas genéricas */
-$$('[data-fade]').forEach(el=>{if(el.closest('.hero'))return;gsap.to(el,{autoAlpha:1,y:0,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 88%'}})});
-$$('[data-stagger]').forEach(g=>gsap.from(g.children,{autoAlpha:0,y:34,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:g,start:'top 85%'}}));
-
-/* ── projetos ── */
-$$('.case').forEach(c=>{
-  const info=$('.case-info',c);
-  gsap.from(info.children,{autoAlpha:0,y:40,duration:1.1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:c,start:'top 78%'}});
-});
-$$('.mwrap').forEach(w=>{
-  gsap.fromTo(w,{clipPath:'inset(10% 5% 10% 5% round 22px)'},{clipPath:'inset(0% 0% 0% 0% round 22px)',ease:'none',scrollTrigger:{trigger:w,start:'top 98%',end:'top 50%',scrub:true}});
-  const m=$('.br,.ph',w);if(m)gsap.from(m,{y:80,scale:.94,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:w,start:'top 85%'}});
-});
-$$('img[data-par]').forEach(im=>gsap.fromTo(im,{scale:1.12,yPercent:-4},{scale:1,yPercent:0,ease:'none',scrollTrigger:{trigger:im.closest('.mwrap'),start:'top bottom',end:'bottom top',scrub:true}}));
-const sp=$('.spark');if(sp){const L=sp.getTotalLength();gsap.fromTo(sp,{strokeDasharray:L,strokeDashoffset:L},{strokeDashoffset:0,duration:2,ease:'power2.out',scrollTrigger:{trigger:sp,start:'top 85%'}})}
-gsap.from('.mtc-i',{x:30,autoAlpha:0,stagger:.1,duration:.9,ease:'expo.out',scrollTrigger:{trigger:'.mtc',start:'top 80%'}});
-
-/* ── números ── */
-$$('[data-count]').forEach(el=>{const v={n:0};gsap.to(v,{n:+el.dataset.count,duration:2,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 92%'},onUpdate:()=>el.textContent=Math.round(v.n)})});
-gsap.from('.st',{autoAlpha:0,y:40,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.stats',start:'top 88%'}});
-
-/* ── experiência ── */
-gsap.from('[data-row]',{autoAlpha:0,y:50,duration:1.1,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.xp',start:'top 82%'}});
-
-/* ── método horizontal ── */
-const mm=gsap.matchMedia();
-mm.add('(min-width: 900px)',()=>{
-  const tr=$('#mtrack'),dist=()=>tr.scrollWidth-innerWidth;
-  const tw=gsap.to(tr,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:'#mpin',start:'top top',end:()=>'+='+dist(),pin:true,scrub:1,invalidateOnRefresh:true,
-    onUpdate:s=>$('#mprog').style.transform=`scaleX(${s.progress})`}});
-  $$('.mc').forEach(c=>gsap.from($('h3',c),{yPercent:50,autoAlpha:0,ease:'none',scrollTrigger:{trigger:c,containerAnimation:tw,start:'left 98%',end:'left 60%',scrub:true}}));
-});
-mm.add('(max-width: 899px)',()=>{
-  gsap.from('.mc',{autoAlpha:0,y:50,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'#mtrack',start:'top 85%'}});
-});
-
-/* ── sobre ── */
-gsap.fromTo('#pfimg',{yPercent:-9},{yPercent:0,ease:'none',scrollTrigger:{trigger:'.pf',start:'top bottom',end:'bottom top',scrub:true}});
-gsap.to('#st1 .wd',{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#st1',start:'top 80%',end:'bottom 45%',scrub:true}});
-
-/* ── contato ── */
-gsap.from('.cta h2 .ln>span',{yPercent:115,duration:1.4,ease:'expo.out',stagger:.12,scrollTrigger:{trigger:'.cta h2',start:'top 85%'}});
-gsap.from('#mag',{scale:0,rotate:-90,duration:1.4,ease:'expo.out',scrollTrigger:{trigger:'.cta-row',start:'top 90%'}});
-if(FINE){const mg=$('#mag'),mx=gsap.quickTo(mg,'x',{duration:.8,ease:'elastic.out(1,.4)'}),my=gsap.quickTo(mg,'y',{duration:.8,ease:'elastic.out(1,.4)'});
-  mg.addEventListener('mousemove',e=>{const r=mg.getBoundingClientRect();mx((e.clientX-r.left-r.width/2)*.35);my((e.clientY-r.top-r.height/2)*.35)});
-  mg.addEventListener('mouseleave',()=>{mx(0);my(0)})}
-gsap.from('#bigname .c',{yPercent:100,duration:1.3,ease:'expo.out',stagger:.04,scrollTrigger:{trigger:'.foot',start:'top 95%'}});
-
-/* ── cursor ── */
-if(FINE){document.documentElement.classList.add('has-cursor');
-  const c1=$('.cur'),c2=$('.cur-r');
-  const x1=gsap.quickTo(c1,'x',{duration:.12,ease:'power3'}),y1=gsap.quickTo(c1,'y',{duration:.12,ease:'power3'});
-  const x2=gsap.quickTo(c2,'x',{duration:.5,ease:'power3'}),y2=gsap.quickTo(c2,'y',{duration:.5,ease:'power3'});
-  addEventListener('mousemove',e=>{x1(e.clientX);y1(e.clientY);x2(e.clientX);y2(e.clientY)});
-  document.addEventListener('mouseover',e=>{const v=e.target.closest('[data-cursor="view"]'),h=e.target.closest('a,button,input,[data-h]');
-    c2.classList.toggle('view',!!v);c2.classList.toggle('hov',!v&&!!h);c1.style.opacity=v?0:1})}
-
-addEventListener('load',()=>ScrollTrigger.refresh());
+/* copiar e-mail */
+const cp=$('#copy');cp.addEventListener('click',async()=>{let ok=false;try{await navigator.clipboard.writeText('miguelcastanhoreisr@gmail.com');ok=true}catch(_){}
+  cp.textContent=ok?'E-mail copiado':'Selecione e copie';setTimeout(()=>cp.textContent='Copiar e-mail',1800)});
 })();
 </script>
 </body>
