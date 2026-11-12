@@ -39,7 +39,7 @@ Remote work for all of Brazil; in-person meetings possible in Rio Grande do Sul.
 - Palette: sky #2F66DB, sky dark #1D3F9E, sky light #5B8FF0, ink #151A24, white #FFFFFF, success #178A4A, alert #C93A2E. The eight SKY tones (#1F4FC4 to #BCD3F8) are only for the Bayer 4×4 dither.
 - Type: Funnel Display 300 for titles; Onest for text; Doto 900 for numbers, weeks and labels (lighter Doto weights are unreadable at small sizes).
 - Voice: first person singular, client language, short sentences. Show deliveries; never invent numbers, team or market leadership. Example schedules are labelled as illustrative.
-- Brand kit: `branding/kit.html` generates Instagram posts, story, avatar, highlight covers and the site icon from the same code as the site; `branding/export` holds the PNGs (`bash branding/exportar.sh` regenerates them).
+- Brand kit: `branding/kit.html` generates Instagram posts, carousels, reel covers, story, avatar, highlight covers and the site icon from the same code as the site; `branding/export` holds the PNGs (`bash branding/exportar.sh` regenerates them). The `branding/` folder is local only and git-ignored, so it is never deployed with the site.
 - The user likes the visual language of agentes.chat (dithered pixel sky, plastic-looking white cards, an interactive demo in the first screen) and wants similar ideas adapted to a portfolio, not a copy. Pixel-art mascots are not wanted.
 
 ## Evidence on Hand
