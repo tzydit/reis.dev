@@ -52,6 +52,9 @@
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/funnel-display-var.woff2" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/onest-var.woff2" crossorigin />
 <script>document.documentElement.classList.add('js')</script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/","gsap":"https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js","gsap/ScrollTrigger":"https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger.js"}}
+</script>
 <style>
 @font-face{font-family:'Funnel Display';font-style:normal;font-weight:300 800;font-display:swap;src:url(assets/fonts/funnel-display-var.woff2) format('woff2')}
 @font-face{font-family:'Onest';font-style:normal;font-weight:100 900;font-display:swap;src:url(assets/fonts/onest-var.woff2) format('woff2')}
@@ -186,6 +189,26 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
 .sh{text-align:center;max-width:780px;margin:0 auto clamp(40px,5vw,64px)}
 .sh h2{font-family:var(--disp);font-weight:300;font-size:clamp(42px,5.4vw,74px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
 .sh p{margin:18px auto 0;color:var(--on-sky-2);font-size:clamp(17px,1.4vw,19px);max-width:540px}
+
+/* celular 3D */
+.cel{position:relative;height:320vh}
+.cel-stage{position:fixed;inset:0;z-index:-1;pointer-events:none;visibility:hidden}
+.cel-stage.on{visibility:visible}
+.cel-stage canvas{display:block;width:100%;height:100%}
+.cel-pin{position:sticky;top:0;height:100vh;width:min(var(--max),100% - 2 * var(--m));margin-inline:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,30vw) minmax(0,1fr);align-items:center;gap:24px;padding:80px 0 40px}
+.cel-txt h2{font-family:var(--disp);font-weight:300;font-size:clamp(36px,3.8vw,56px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.cel-txt p{margin-top:16px;color:var(--on-sky-2);font-size:clamp(16px,1.3vw,18px);max-width:34ch}
+.cel-cap{grid-column:3;justify-self:end;width:min(280px,100%);padding:18px 20px 20px;display:grid;gap:4px}
+.cel-k{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--green)}
+.cel-k i{width:7px;height:7px;border-radius:50%;background:var(--green)}
+.cel-cap b{font-family:var(--disp);font-weight:400;font-size:26px;letter-spacing:-.025em;line-height:1.1;margin-top:4px}
+.cel-cap #celNote{font-size:14px;color:var(--ink-2)}
+.cel-cap .btn{margin-top:12px;justify-self:start}
+.cel.still{height:100vh}
+.cel.still .cel-stage{position:absolute;visibility:visible}
+.cel.off{height:auto}
+.cel.off .cel-pin{position:static;height:auto;padding:90px 0}
+@media(max-width:820px){.cel-pin{grid-template-columns:1fr;align-content:space-between;text-align:center;padding:84px 0 28px}.cel-txt p{margin-inline:auto}.cel-cap{grid-column:1;justify-self:center;text-align:left;width:min(340px,100%);grid-template-columns:1fr auto;align-items:center;column-gap:12px;padding:12px 14px}.cel-k{display:none}.cel-cap b{font-size:20px;margin:0}.cel-cap #celNote{grid-column:1;font-size:13px}.cel-cap .btn{grid-column:2;grid-row:1/3;margin:0}}
 
 /* trabalhos */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
@@ -445,6 +468,23 @@ svg.i{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:
     </div>
   </section>
 
+  <!-- CELULAR 3D: gira com o scroll; a cada volta a tela troca de projeto -->
+  <section class="cel" id="celular" aria-label="Projetos no celular">
+    <div class="cel-stage" id="celStage" aria-hidden="true"></div>
+    <div class="cel-pin">
+      <div class="cel-txt">
+        <h2 data-up>Feito para o celular de quem usa.</h2>
+        <p data-up style="--i:1">Role a página. A cada volta do aparelho, aparece outro projeto que está no ar.</p>
+      </div>
+      <div class="card r cel-cap" aria-live="polite">
+        <span class="cel-k"><i></i>Projeto na tela</span>
+        <b id="celName">FinançasIQ</b>
+        <span id="celNote">Produto próprio · no ar</span>
+        <a class="btn btn-d btn-sm" id="celLink" href="https://www.financasiq.com" target="_blank" rel="noopener" aria-label="Abrir FinançasIQ">Abrir <svg class="i"><use href="#i-out"/></svg></a>
+      </div>
+    </div>
+  </section>
+
   <!-- TRABALHOS -->
   <section class="sec" id="trabalhos">
     <div class="wrap">
@@ -688,7 +728,7 @@ function navUpd(y){nav.classList.toggle('solid',y>30);if(Math.abs(y-lastY)>4){na
 
 /* rolagem suave */
 let lenis=null;
-if(window.Lenis&&!RM){lenis=new Lenis({lerp:.1});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);lenis.on('scroll',e=>navUpd(e.scroll))}
+if(window.Lenis&&!RM){lenis=new Lenis({lerp:.1});const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf);lenis.on('scroll',e=>navUpd(e.scroll));window.__lenis=lenis}
 else addEventListener('scroll',()=>navUpd(scrollY),{passive:true});
 $$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href'),t=id==='#top'?0:document.querySelector(id);if(t===null)return;e.preventDefault();lenis?lenis.scrollTo(t,{duration:1.4,offset:-90}):(t===0?scrollTo(0,0):t.scrollIntoView())}));
 
@@ -784,5 +824,6 @@ const cp=$('#copy');cp.addEventListener('click',async()=>{let ok=false;try{await
   cp.textContent=ok?'E-mail copiado':'Selecione e copie';setTimeout(()=>cp.textContent='Copiar e-mail',1800)});
 })();
 </script>
+<script type="module" src="assets/js/showcase/main.js"></script>
 </body>
 </html>
